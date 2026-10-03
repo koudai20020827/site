@@ -3,6 +3,8 @@
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const NS = "http://www.w3.org/2000/svg";
+  // Auto-rotation of the lab scenes stops as soon as the visitor touches any lab control.
+  const lab = { auto: !reduced, rotate() {} };
 
   /* ---------- scroll reveal ---------- */
   const revealEls = $$(".reveal");
@@ -175,7 +177,12 @@
     }
     function schedule() {
       clearTimeout(timer);
-      if (playing && visible && !document.hidden) timer = setTimeout(() => { show(i + 1); schedule(); }, 4800);
+      if (playing && visible && !document.hidden)
+        timer = setTimeout(() => {
+          if (i === def.steps.length - 1 && lab.auto) return lab.rotate();
+          show(i + 1);
+          schedule();
+        }, 4400);
     }
     function setPlaying(v) {
       playing = v;
@@ -189,6 +196,7 @@
     setPlaying(playing);
     show(0);
     return {
+      reset() { show(0); },
       activate(v) {
         visible = v;
         if (v) show(i);
@@ -265,16 +273,22 @@
     });
     render();
     if (!reduced) raf = requestAnimationFrame(loop);
+    let rot = null;
     return {
+      reset() {},
       activate(v) {
         visible = v;
-        if (v) render();
+        clearTimeout(rot);
+        if (v) {
+          render();
+          if (lab.auto) rot = setTimeout(() => lab.auto && lab.rotate(), 11000);
+        }
       },
     };
   }
 
   /* ---------- lab tabs ---------- */
-  (function lab() {
+  (function labTabs() {
     const tabs = $$(".lab-tabs [role=tab]");
     const panels = $$(".lab-panel");
     if (!tabs.length) return;
@@ -310,7 +324,15 @@
         }
       });
     });
+    lab.rotate = () => {
+      const nx = (current + 1) % tabs.length;
+      ctrls[nx].reset();
+      apply(nx);
+    };
     const card = $(".lab-card");
+    ["pointerdown", "keydown", "input"].forEach((ev) =>
+      card.addEventListener(ev, () => (lab.auto = false)),
+    );
     if ("IntersectionObserver" in window) {
       new IntersectionObserver((es) => {
         onScreen = es[0].isIntersecting;
@@ -327,21 +349,33 @@
   (function quiz() {
     const root = $("#quiz");
     if (!root) return;
+    // Rules and basics are taken from the app's own content (aws_judgment_rules.json).
     const Q = [
-      { q: "ユーザーIDをキーに、プロフィールを高速に取得したい。表の結合は不要。", tags: ["キー検索", "JOIN不要", "高速"], opts: [["DynamoDB", "NoSQL", "dynamodb"], ["RDS", "リレーショナルDB", "rds"], ["Redshift", "データウェアハウス", "redshift"]], a: 0, why: "キーでの取得が中心でJOINが不要なら、キーバリュー型のDynamoDBが向きます。" },
-      { q: "注文・顧客・明細の表を結合して、条件検索や集計をしたい。", tags: ["表の結合", "SQL", "トランザクション"], opts: [["DynamoDB", "NoSQL", "dynamodb"], ["RDS", "リレーショナルDB", "rds"], ["S3", "オブジェクトストレージ", "s3"]], a: 1, why: "表同士の関係をSQLで扱うなら、RDSなどのリレーショナルデータベースです。" },
-      { q: "画像や動画を大量に、安く、耐久性高く保存してWebで配信したい。", tags: ["大量", "低コスト", "静的コンテンツ"], opts: [["EBS", "EC2用ブロックストレージ", "ebs"], ["S3", "オブジェクトストレージ", "s3"], ["EFS", "共有ファイルシステム", "efs"]], a: 1, why: "容量を気にせず保存でき、静的コンテンツ配信にも使えるのがS3です。" },
-      { q: "アクセス数の増減に合わせて、EC2の台数を自動で増減したい。", tags: ["自動増減", "可用性", "コスト最適化"], opts: [["Auto Scaling", "台数を自動調整", "autoscaling"], ["CloudFront", "コンテンツ配信", "cloudfront"], ["Route 53", "DNS", "route53"]], a: 0, why: "負荷に応じてインスタンス数を増減するのはAuto Scalingの役割です。" },
-      { q: "監査用の古いログを何年も保管したい。取り出しに数時間かかってもよい。", tags: ["長期保管", "最安", "低頻度"], opts: [["S3 Standard", "頻繁に使う", "s3-standard"], ["S3 Glacier", "アーカイブ", "s3-glacier"], ["EBS", "ブロックストレージ", "ebs"]], a: 1, why: "めったに取り出さない長期保管データは、保管料が安いGlacier系のクラスが向きます。" },
+      { q: "ユーザーIDをキーに、プロフィールを高速に取得したい。表の結合は不要。", tags: ["キー検索", "JOIN不要", "高速"], opts: [["DynamoDB", "NoSQL", "dynamodb"], ["RDS", "リレーショナルDB", "rds"], ["Redshift", "データウェアハウス", "redshift"]], a: 0, why: "キーでの取得が中心でJOINが不要なら、キーバリュー型のDynamoDBが向きます。", rule: ["キーで高速に引くならDynamoDB", "キー中心の大量アクセスでJOINが不要なら、DynamoDBを検討する。"], basic: ["dynamodb", "Amazon DynamoDB", "キーで高速に取得するNoSQL"] },
+      { q: "注文・顧客・明細の表を結合して、条件検索や更新をしたい。", tags: ["表の結合", "SQL", "更新"], opts: [["DynamoDB", "NoSQL", "dynamodb"], ["RDS", "リレーショナルDB", "rds"], ["S3", "オブジェクトストレージ", "s3"]], a: 1, why: "表同士の関係をSQLで扱うなら、RDSなどのリレーショナルデータベースです。", rule: ["データの形と処理からDBを選ぶ", "注文などの関係データを更新する基盤にはRDS、大量の履歴データを集計・分析するデータウェアハウスにはRedshiftを比較する。"], basic: ["rds", "Amazon RDS", "運用を任せるリレーショナルDB"] },
+      { q: "画像やログをオブジェクトとして大量に保存し、取得したい。", tags: ["オブジェクト", "大量", "低コスト"], opts: [["EBS", "EC2用ブロックストレージ", "ebs"], ["S3", "オブジェクトストレージ", "s3"], ["EFS", "共有ファイルシステム", "efs"]], a: 1, why: "オブジェクトとして保存・取得するならS3。EBSはEC2のディスク、EFSは複数のLinuxで共有するファイルです。", rule: ["保存形式と保持の必要性からストレージを選ぶ", "オブジェクトとして保存するならS3、EC2のディスクならEBS、複数のLinux環境で同じファイルを共有するならEFS。"], basic: ["s3", "Amazon S3", "ファイルをオブジェクトとして保存"] },
+      { q: "昼間はEC2の台数を増やし、夜間は減らしたい。", tags: ["台数を変える", "需要に合わせる", "コスト"], opts: [["Auto Scaling", "台数を自動調整", "autoscaling"], ["CloudFront", "コンテンツ配信", "cloudfront"], ["Route 53", "DNS", "route53"]], a: 0, why: "需要に合わせてEC2の台数を変えるのはAuto Scaling。リクエストを振り分けるのはELBの役割です。", rule: ["台数を変えるか、リクエストを分けるか", "需要に合わせてEC2台数を変えるのはAuto Scaling、リクエストを複数の宛先へ振り分けるのはELB。"], basic: ["autoscaling", "Amazon EC2 Auto Scaling", "メトリクスや時刻に応じて、EC2の台数を自動で増減"] },
+      { q: "バックアップを数年残したい。読むのは監査のときだけで、取り出しは待てる。", tags: ["長期保存", "低頻度", "復元を待てる"], opts: [["S3 Standard", "頻繁に使う", "s3-standard"], ["S3 Glacier", "アーカイブ", "s3-glacier"], ["EBS", "ブロックストレージ", "ebs"]], a: 1, why: "長期保存で復元を待てるなら、保管料が安いGlacier系のクラスを比較します。", rule: ["S3は取得の待ち時間とアクセス頻度で選ぶ", "即時取得が必要なら、低頻度はStandard-IA、頻度が変わるならIntelligent-Tiering。長期保存で復元を待てるならGlacier系を比較する。"], basic: ["s3", "Amazon S3", "ファイルをオブジェクトとして保存"] },
     ];
     const el = {
-      n: $("#quiz-n"), q: $("#quiz-q"), tags: $("#quiz-tags"), opts: $("#quiz-opts"),
-      res: $("#quiz-result"), verdict: $("#quiz-verdict"), why: $("#quiz-why"), next: $("#quiz-next"), prog: $("#quiz-prog"),
+      n: $("#quiz-n"), q: $("#quiz-q"), tags: $("#quiz-tags"), opts: $("#quiz-opts"), auto: $("#quiz-auto"),
+      idle: $("#qr-idle"), body: $("#qr-body"), verdict: $("#quiz-verdict"), why: $("#quiz-why"),
+      rule: $("#qr-rule"), ruleSum: $("#qr-rule-sum"), basicIcon: $("#qr-basic-icon"), basicName: $("#qr-basic-name"),
+      basicDesc: $("#qr-basic-desc"), next: $("#quiz-next"), prog: $("#quiz-prog"),
     };
+    const icon = (id) => `<svg class="ico" viewBox="0 0 80 80" aria-hidden="true"><use href="#ic-${id}" width="80" height="80"/></svg>`;
     let i = 0;
     let score = 0;
+    let phase = "ask";
+    let touched = false;
+    let visible = false;
+    let timer = null;
+    let finished = false;
+
     function render() {
       const d = Q[i];
+      phase = "ask";
+      finished = false;
       el.n.textContent = `${i + 1} / ${Q.length}`;
       el.q.textContent = d.q;
       el.tags.innerHTML = "";
@@ -351,26 +385,29 @@
         el.tags.appendChild(s);
       });
       el.opts.innerHTML = "";
-      d.opts.forEach(([name, sub, icon], k) => {
+      d.opts.forEach(([name, sub, ic], k) => {
         const b = document.createElement("button");
         b.type = "button";
         b.className = "opt";
-        b.innerHTML = `<img src="./assets/aws-icons/${icon}.svg" alt="" /><span></span><small></small>`;
+        b.innerHTML = `${icon(ic)}<span></span><small></small>`;
         b.children[1].textContent = name;
         b.lastChild.textContent = sub;
         b.addEventListener("click", () => pick(k));
         el.opts.appendChild(b);
       });
-      el.res.hidden = true;
+      el.body.hidden = true;
+      el.idle.hidden = false;
       el.prog.style.width = (i / Q.length) * 100 + "%";
     }
     function pick(k) {
+      if (phase !== "ask") return;
+      phase = "result";
       const d = Q[i];
-      const btns = $$(".opt", el.opts);
       const ok = k === d.a;
       if (ok) score++;
-      btns.forEach((b, j) => {
+      $$(".opt", el.opts).forEach((b, j) => {
         b.disabled = true;
+        b.classList.remove("pre");
         if (j === d.a) b.classList.add("ok");
         else if (j === k) b.classList.add("ng");
         else b.classList.add("faded");
@@ -378,30 +415,89 @@
       el.verdict.textContent = ok ? "正解！" : "おしい。正解は " + d.opts[d.a][0];
       el.verdict.className = "quiz-verdict " + (ok ? "ok" : "ng");
       el.why.textContent = d.why;
+      el.rule.textContent = d.rule[0];
+      el.ruleSum.textContent = d.rule[1];
+      el.basicIcon.innerHTML = icon(d.basic[0]);
+      el.basicName.textContent = d.basic[1];
+      el.basicDesc.textContent = d.basic[2];
       el.next.textContent = i === Q.length - 1 ? "結果を見る" : "次の問題へ";
-      el.res.hidden = false;
+      el.idle.hidden = true;
+      el.body.hidden = false;
+      el.body.classList.remove("fresh");
+      void el.body.offsetWidth;
+      el.body.classList.add("fresh");
       el.prog.style.width = ((i + 1) / Q.length) * 100 + "%";
     }
-    el.next.addEventListener("click", () => {
+    function advance(auto) {
+      if (finished) {
+        i = 0;
+        score = 0;
+        return render();
+      }
       if (i === Q.length - 1) {
+        if (auto) {
+          i = 0;
+          score = 0;
+          return render();
+        }
+        finished = true;
+        phase = "result";
         el.n.textContent = "RESULT";
         el.q.textContent = `${Q.length}問中 ${score}問 正解`;
         el.tags.innerHTML = "";
         el.opts.innerHTML = "";
         el.verdict.textContent = score >= 4 ? "条件から選べています。" : "条件を見る練習をもう少し。";
         el.verdict.className = "quiz-verdict ok";
-        el.why.textContent = "アプリでは64のルールと650問の模試で、この「条件→選択」を繰り返し練習できます。";
+        el.why.textContent = "アプリでは64の判断ルールと650問の模試で、この「条件→選択」を繰り返し練習できます。";
+        el.rule.textContent = "判断ルール 64件";
+        el.ruleSum.textContent = "条件から候補を選ぶ分岐図つき。";
+        el.basicIcon.innerHTML = icon("ec2");
+        el.basicName.textContent = "基本知識 152テーマ";
+        el.basicDesc.textContent = "全カードに状態を切り替える図解。";
         el.next.textContent = "もう一度";
-        i = -1;
-        score = 0;
-        el.res.hidden = false;
         el.prog.style.width = "100%";
         return;
       }
       i++;
       render();
-    });
+    }
+    function schedule() {
+      clearTimeout(timer);
+      if (touched || reduced || !visible || document.hidden) return;
+      const wait = phase === "ask" ? 2600 : 7500;
+      timer = setTimeout(() => {
+        if (phase === "ask") {
+          const b = $$(".opt", el.opts)[Q[i].a];
+          if (b) b.classList.add("pre");
+          timer = setTimeout(() => {
+            pick(Q[i].a);
+            schedule();
+          }, 900);
+          return;
+        }
+        advance(true);
+        schedule();
+      }, wait);
+    }
+    el.next.addEventListener("click", () => advance(false));
+    ["pointerdown", "keydown"].forEach((ev) =>
+      root.addEventListener(ev, () => {
+        if (touched) return;
+        touched = true;
+        clearTimeout(timer);
+        $$(".opt", el.opts).forEach((b) => b.classList.remove("pre"));
+        if (el.auto) el.auto.hidden = true;
+      }),
+    );
+    if (el.auto && (reduced || !("IntersectionObserver" in window))) el.auto.hidden = true;
     render();
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver((es) => {
+        visible = es[0].isIntersecting;
+        schedule();
+      }, { threshold: 0.45 }).observe(root);
+      document.addEventListener("visibilitychange", schedule);
+    }
   })();
 
   /* ---------- app tour ---------- */
@@ -447,5 +543,16 @@
       });
     });
     $("#next-step").addEventListener("click", () => show((cur + 1) % tabs.length));
+    // The tour advances on its own until the visitor touches it.
+    const tourEl = $(".tour");
+    let touched = false;
+    let seen = false;
+    ["pointerdown", "keydown"].forEach((ev) => tourEl.addEventListener(ev, () => (touched = true)));
+    if (!reduced && "IntersectionObserver" in window) {
+      new IntersectionObserver((es) => (seen = es[0].isIntersecting), { threshold: 0.4 }).observe(tourEl);
+      setInterval(() => {
+        if (!touched && seen && !document.hidden) show((cur + 1) % tabs.length);
+      }, 6500);
+    }
   })();
 })();
