@@ -341,7 +341,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .chip.c3 { right: auto; left: 4%; bottom: 10%; }
 
 /* official AWS icons: used unmodified; cards and group frames follow the AWS architecture-diagram style */
-.node image, .h-node image { pointer-events: none; }
+.node use, .h-node use { pointer-events: none; }
 .h-node rect { fill: #fff; stroke: rgba(36, 47, 62, 0.16); stroke-width: 1.5; }
 .node rect { stroke: rgba(36, 47, 62, 0.16); stroke-width: 1.5; }
 .node.aws rect { stroke: rgba(36, 47, 62, 0.16); }
@@ -353,8 +353,33 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .grp.asg { fill: rgba(237, 113, 0, 0.04); stroke: #ed7100; stroke-dasharray: 8 6; }
 .grp-t { font-size: 13px; font-weight: 700; fill: #232f3e; }
 .sc-ec2 rect { fill: #fff; stroke: rgba(36, 47, 62, 0.16); stroke-width: 1.5; }
-.sc-ec2 image { opacity: 0.22; transition: opacity 0.4s; }
-.sc-ec2.on image { opacity: 1; }
+.sc-ec2 use { opacity: 0.22; transition: opacity 0.4s; }
+.sc-ec2.on use { opacity: 1; }
 .sc-ec2 text { fill: #8b96ac; }
 .opt img { width: 30px; height: 30px; flex: none; }
 .sc-ec2 { transform-box: fill-box; transform-origin: center; }
+
+/* voice (personas) */
+.notice { display: inline-block; margin-top: 16px; padding: 8px 16px; border-radius: 999px; background: #fff6e6; color: #8a5200; font-size: 13px; font-weight: 700; }
+.voice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.voice-card { position: relative; background: #fff; border: 1px solid var(--line); border-radius: 26px; padding: 24px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 16px 44px rgba(0, 29, 255, 0.07); }
+.v-head { display: flex; align-items: center; gap: 14px; }
+.v-head strong { display: block; font-size: 17px; font-weight: 900; line-height: 1.35; }
+.v-head small { color: var(--muted); font-size: 12.5px; font-weight: 700; }
+.av { flex: none; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 900; font-size: 18px; }
+.av.a1 { background: linear-gradient(135deg, #001dff, #2f7cff); }
+.av.a2 { background: linear-gradient(135deg, #ff9900, #ffbd4a); }
+.av.a3 { background: linear-gradient(135deg, #8c4fff, #b58cff); }
+.av.a4 { background: linear-gradient(135deg, #00a4a6, #3cd2c8); }
+.av.a5 { background: linear-gradient(135deg, #14b85a, #56d98c); }
+.av.a6 { background: linear-gradient(135deg, #e5484d, #ff8a8f); }
+.v-goal { font-size: 12.5px; color: #435069; }
+.v-goal b { display: inline-block; margin-right: 8px; padding: 1px 10px; border-radius: 999px; background: #eef3ff; color: var(--blue); font-size: 11.5px; }
+.v-quote { flex: 1; font-size: 14.5px; line-height: 1.85; color: #243049; }
+.v-use { display: flex; gap: 6px; flex-wrap: wrap; }
+.v-use span { font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: #f1f5ff; color: #34415c; }
+.v-badge { position: absolute; top: 14px; right: 16px; font-size: 10.5px; font-weight: 900; letter-spacing: 0.08em; color: #8a5200; background: #fff6e6; padding: 2px 10px; border-radius: 999px; }
+.v-head { padding-right: 70px; }
+@media (max-width: 960px) { .voice-grid { grid-template-columns: 1fr; } }
+@media (min-width: 640px) and (max-width: 960px) { .voice-grid { grid-template-columns: 1fr 1fr; } }
+.v-quote { text-wrap: pretty; line-break: strict; }

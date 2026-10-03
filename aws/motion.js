@@ -214,7 +214,7 @@
       o.setAttribute("transform", `translate(${x} ${y})`);
       const e = document.createElementNS(NS, "g");
       e.setAttribute("class", "sc-ec2" + (n < 2 ? " min" : ""));
-      e.innerHTML = `<rect width="104" height="92" rx="16"/><image href="./assets/aws-icons/ec2.svg" x="28" y="10" width="48" height="48" alt=""/><text x="52" y="80" text-anchor="middle">EC2 #${n + 1}</text>`;
+      e.innerHTML = `<rect width="104" height="92" rx="16"/><use href="#ic-ec2" x="28" y="10" width="48" height="48"/><text x="52" y="80" text-anchor="middle">EC2 #${n + 1}</text>`;
       o.appendChild(e);
       g.appendChild(o);
       slots.push(e);
@@ -236,7 +236,9 @@
         s.classList.toggle("on", on);
       });
       const h = Math.round(load * 1.5);
-      fill.setAttribute("y", 170 - h);
+      const asg = $("#sc-asg", svg);
+      if (asg) asg.classList.toggle("dim", false);
+      fill.setAttribute("y", 160 - h);
       fill.setAttribute("height", h);
       fill.style.fill = load > 70 ? "#ff9900" : "";
       text.textContent = auto ? "自動" : Math.round(load) + "%";
