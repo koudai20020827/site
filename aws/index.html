@@ -27,6 +27,10 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
     />
+    <link rel="preload" as="image" href="./assets/aws-icons/user.svg" />
+    <link rel="preload" as="image" href="./assets/aws-icons/cloudfront.svg" />
+    <link rel="preload" as="image" href="./assets/aws-icons/elb.svg" />
+    <link rel="preload" as="image" href="./assets/aws-icons/ec2.svg" />
     <link rel="stylesheet" href="./styles.css?v=lab-20261004" />
     <script src="./motion.js?v=lab-20261004" defer></script>
   </head>
@@ -79,46 +83,10 @@
 
           <div class="hero-stage" aria-label="Webシステムの動く図解">
             <svg class="hero-arch" viewBox="0 0 560 420" role="img" aria-label="ユーザーのリクエストがCloudFront、ロードバランサー、EC2を通ってデータベースへ届く流れ">
-              <defs>
-                <linearGradient id="hg" x1="0" x2="1">
-                  <stop offset="0" stop-color="#001dff" />
-                  <stop offset="1" stop-color="#2f7cff" />
-                </linearGradient>
-              </defs>
-              <g class="h-edges" fill="none" stroke-width="3" stroke-linecap="round">
-                <path id="he1" d="M80 210 H180" />
-                <path id="he2" d="M240 210 H300" />
-                <path id="he3a" d="M360 210 C400 210 390 120 440 120" />
-                <path id="he3b" d="M360 210 C400 210 390 300 440 300" />
-              </g>
-              <g class="h-node" transform="translate(20 170)">
-                <rect width="60" height="80" rx="16" />
-                <circle cx="30" cy="30" r="9" /><path d="M14 62c3-12 29-12 32 0" />
-                <text x="30" y="76" text-anchor="middle">User</text>
-              </g>
-              <g class="h-node n-aws" transform="translate(180 170)">
-                <rect width="60" height="80" rx="16" />
-                <circle cx="30" cy="32" r="14" /><path d="M16 32h28M30 18c-8 8-8 20 0 28M30 18c8 8 8 20 0 28" />
-                <text x="30" y="76" text-anchor="middle">CloudFront</text>
-              </g>
-              <g class="h-node n-aws" transform="translate(300 170)">
-                <rect width="60" height="80" rx="16" />
-                <path d="M16 26h28M16 38h28M16 50h28" /><circle cx="30" cy="26" r="2" /><circle cx="30" cy="38" r="2" /><circle cx="30" cy="50" r="2" />
-                <text x="30" y="76" text-anchor="middle">ALB</text>
-              </g>
-              <g class="h-node n-aws h-ec2 a" transform="translate(440 80)">
-                <rect width="60" height="80" rx="16" />
-                <rect x="14" y="16" width="32" height="30" rx="4" /><path d="M22 24h16M22 32h16" />
-                <text x="30" y="76" text-anchor="middle">EC2</text>
-              </g>
-              <g class="h-node n-aws h-ec2 b" transform="translate(440 260)">
-                <rect width="60" height="80" rx="16" />
-                <rect x="14" y="16" width="32" height="30" rx="4" /><path d="M22 24h16M22 32h16" />
-                <text x="30" y="76" text-anchor="middle">EC2</text>
-              </g>
-              <circle class="h-packet" id="hp" r="7" cx="80" cy="210" />
-              <circle class="h-packet p2" id="hp2" r="7" cx="80" cy="210" />
-            </svg>
+<g class="h-edges" fill="none" stroke-width="3" stroke-linecap="round"><path id="he1" d="M86 210 H150"/><path id="he2" d="M226 210 H290"/><path id="he3a" d="M366 210 C400 210 396 110 440 110"/><path id="he3b" d="M366 210 C400 210 396 310 440 310"/></g>
+<g class="h-node " transform="translate(10 164)"><rect width="76" height="92" rx="16"/><image href="./assets/aws-icons/user.svg" x="14" y="10" width="48" height="48" decoding="sync"/><text x="38" y="82" text-anchor="middle">User</text></g><g class="h-node n-aws" transform="translate(150 164)"><rect width="76" height="92" rx="16"/><image href="./assets/aws-icons/cloudfront.svg" x="14" y="10" width="48" height="48" decoding="sync"/><text x="38" y="82" text-anchor="middle">CloudFront</text></g><g class="h-node n-aws" transform="translate(290 164)"><rect width="76" height="92" rx="16"/><image href="./assets/aws-icons/elb.svg" x="14" y="10" width="48" height="48" decoding="sync"/><text x="38" y="82" text-anchor="middle">ALB</text></g><g class="h-node n-aws" transform="translate(440 64)"><rect width="76" height="92" rx="16"/><image href="./assets/aws-icons/ec2.svg" x="14" y="10" width="48" height="48" decoding="sync"/><text x="38" y="82" text-anchor="middle">EC2</text></g><g class="h-node n-aws" transform="translate(440 264)"><rect width="76" height="92" rx="16"/><image href="./assets/aws-icons/ec2.svg" x="14" y="10" width="48" height="48" decoding="sync"/><text x="38" y="82" text-anchor="middle">EC2</text></g>
+<circle class="h-packet" id="hp" r="7" cx="86" cy="210"/><circle class="h-packet p2" id="hp2" r="7" cx="86" cy="210"/>
+</svg>
             <span class="chip c1">動く図解</span>
             <span class="chip c2">条件で選ぶ</span>
             <span class="chip c3">解説→基本へ</span>
@@ -149,19 +117,15 @@
             <div class="lab-panel" id="lp-0" role="tabpanel" aria-labelledby="lt-0" data-scene="flow">
               <div class="lab-canvas">
                 <svg viewBox="0 0 640 340" class="scene" role="img" aria-label="3層構成のWebシステムの図">
-                  <g class="edges" fill="none">
-                    <path id="f-e1" d="M70 170 H160" /><path id="f-e2" d="M230 170 H310" />
-                    <path id="f-e3" d="M380 170 C410 170 410 90 450 90" /><path id="f-e4" d="M380 170 C410 170 410 250 450 250" />
-                    <path id="f-e5" d="M520 90 C560 90 560 170 580 170" /><path id="f-e6" d="M520 250 C560 250 560 170 580 170" />
-                  </g>
-                  <g class="node" id="f-user" transform="translate(10 130)"><rect width="60" height="80" rx="14" /><circle cx="30" cy="30" r="9" /><path d="M14 62c3-12 29-12 32 0" /><text x="30" y="74" text-anchor="middle">ユーザー</text></g>
-                  <g class="node aws" id="f-cf" transform="translate(160 130)"><rect width="70" height="80" rx="14" /><circle cx="35" cy="32" r="14" /><path d="M21 32h28M35 18c-8 8-8 20 0 28M35 18c8 8 8 20 0 28" /><text x="35" y="74" text-anchor="middle">CloudFront</text></g>
-                  <g class="node aws" id="f-alb" transform="translate(310 130)"><rect width="70" height="80" rx="14" /><path d="M20 26h30M20 38h30M20 50h30" /><text x="35" y="74" text-anchor="middle">ALB</text></g>
-                  <g class="node aws" id="f-ec1" transform="translate(450 50)"><rect width="70" height="80" rx="14" /><rect x="19" y="16" width="32" height="30" rx="4" /><path d="M27 24h16M27 32h16" /><text x="35" y="74" text-anchor="middle">EC2 (AZ-a)</text></g>
-                  <g class="node aws" id="f-ec2" transform="translate(450 210)"><rect width="70" height="80" rx="14" /><rect x="19" y="16" width="32" height="30" rx="4" /><path d="M27 24h16M27 32h16" /><text x="35" y="74" text-anchor="middle">EC2 (AZ-c)</text></g>
-                  <g class="node aws" id="f-db" transform="translate(580 130)"><rect width="56" height="80" rx="14" /><ellipse cx="28" cy="24" rx="14" ry="6" /><path d="M14 24v22c0 3 6 6 14 6s14-3 14-6V24" /><text x="28" y="74" text-anchor="middle">RDS</text></g>
-                  <circle class="packet" r="8" cx="-20" cy="-20" />
-                </svg>
+<g class="edges" fill="none"><path id="f-e1" d="M84 170 H150"/><path id="f-e2" d="M226 170 H290"/><path id="f-e3" d="M366 170 C402 170 402 90 440 90"/><path id="f-e4" d="M366 170 C402 170 402 250 440 250"/><path id="f-e5" d="M516 90 C546 90 536 170 556 170"/><path id="f-e6" d="M516 250 C546 250 536 170 556 170"/></g>
+<g class="node " id="f-user" transform="translate(8 128)"><rect width="76" height="84" rx="14"/><image href="./assets/aws-icons/user.svg" x="14" y="8" width="48" height="48" decoding="sync"/><text x="38" y="72" text-anchor="middle">ユーザー</text></g>
+<g class="node aws" id="f-cf" transform="translate(150 128)"><rect width="76" height="84" rx="14"/><image href="./assets/aws-icons/cloudfront.svg" x="14" y="8" width="48" height="48" decoding="sync"/><text x="38" y="72" text-anchor="middle">CloudFront</text></g>
+<g class="node aws" id="f-alb" transform="translate(290 128)"><rect width="76" height="84" rx="14"/><image href="./assets/aws-icons/elb.svg" x="14" y="8" width="48" height="48" decoding="sync"/><text x="38" y="72" text-anchor="middle">ALB</text></g>
+<g class="node aws" id="f-ec1" transform="translate(440 48)"><rect width="76" height="84" rx="14"/><image href="./assets/aws-icons/ec2.svg" x="14" y="8" width="48" height="48" decoding="sync"/><text x="38" y="72" text-anchor="middle">EC2 (AZ-a)</text></g>
+<g class="node aws" id="f-ec2" transform="translate(440 208)"><rect width="76" height="84" rx="14"/><image href="./assets/aws-icons/ec2.svg" x="14" y="8" width="48" height="48" decoding="sync"/><text x="38" y="72" text-anchor="middle">EC2 (AZ-c)</text></g>
+<g class="node aws" id="f-db" transform="translate(556 128)"><rect width="76" height="84" rx="14"/><image href="./assets/aws-icons/rds.svg" x="14" y="8" width="48" height="48" decoding="sync"/><text x="38" y="72" text-anchor="middle">RDS</text></g>
+<circle class="packet" r="8" cx="-20" cy="-20"/>
+</svg>
               </div>
               <div class="lab-side">
                 <p class="step-count"><span class="cur">1</span> / <span class="tot">5</span></p>
@@ -181,15 +145,12 @@
             <div class="lab-panel" id="lp-1" role="tabpanel" aria-labelledby="lt-1" data-scene="scaling" hidden>
               <div class="lab-canvas">
                 <svg viewBox="0 0 640 340" class="scene" role="img" aria-label="アクセス数に応じてEC2が増減する図">
-                  <rect class="asg-box" x="170" y="30" width="460" height="280" rx="22" />
-                  <text class="asg-label" x="190" y="58">Auto Scaling グループ（最小2・最大6）</text>
-                  <g id="sc-nodes"></g>
-                  <g transform="translate(20 80)">
-                    <rect class="gauge-bg" x="0" y="0" width="110" height="180" rx="14" />
-                    <rect id="sc-fill" class="gauge-fill" x="10" y="170" width="90" height="0" rx="8" />
-                    <text x="55" y="204" text-anchor="middle" class="gauge-t">アクセス</text>
-                  </g>
-                </svg>
+<rect class="grp asg" x="170" y="22" width="460" height="300" rx="6"/>
+<image href="./assets/aws-icons/grp-asg.svg" x="170" y="22" width="32" height="32" decoding="sync"/>
+<text class="grp-t" x="210" y="44">Auto Scaling グループ（最小2・最大6）</text>
+<g id="sc-nodes"></g>
+<g transform="translate(20 80)"><rect class="gauge-bg" x="0" y="0" width="110" height="180" rx="14"/><rect id="sc-fill" class="gauge-fill" x="10" y="170" width="90" height="0" rx="8"/><text x="55" y="204" text-anchor="middle" class="gauge-t">アクセス</text></g>
+</svg>
               </div>
               <div class="lab-side">
                 <p class="step-count">LIVE</p>
@@ -208,20 +169,14 @@
             <div class="lab-panel" id="lp-2" role="tabpanel" aria-labelledby="lt-2" data-scene="s3" hidden>
               <div class="lab-canvas">
                 <svg viewBox="0 0 640 340" class="scene" role="img" aria-label="S3のデータが時間とともに安価なストレージクラスへ移る図">
-                  <g class="bins">
-                    <g class="bin" id="s3-b0" transform="translate(20 70)"><rect width="170" height="190" rx="16" /><text x="85" y="34" text-anchor="middle" class="bt">S3 Standard</text><text x="85" y="56" text-anchor="middle" class="bs">よく使う</text></g>
-                    <g class="bin" id="s3-b1" transform="translate(235 70)"><rect width="170" height="190" rx="16" /><text x="85" y="34" text-anchor="middle" class="bt">Standard-IA</text><text x="85" y="56" text-anchor="middle" class="bs">たまに使う</text></g>
-                    <g class="bin" id="s3-b2" transform="translate(450 70)"><rect width="170" height="190" rx="16" /><text x="85" y="34" text-anchor="middle" class="bt">Glacier</text><text x="85" y="56" text-anchor="middle" class="bs">長期保管</text></g>
-                  </g>
-                  <g id="s3-files"></g>
-                  <path class="arrow" d="M195 165h35M410 165h35" />
-                  <g transform="translate(20 285)">
-                    <text class="bs" x="0" y="0">保管料</text>
-                    <rect class="cost-bg" x="56" y="-12" width="564" height="14" rx="7" />
-                    <rect id="s3-cost" class="cost-fill" x="56" y="-12" width="564" height="14" rx="7" />
-                  </g>
-                  <text id="s3-day" class="dayt" x="320" y="30" text-anchor="middle">0日目</text>
-                </svg>
+<g class="bin" id="s3-b0" transform="translate(20 60)"><rect width="170" height="200" rx="16"/><image href="./assets/aws-icons/s3-standard.svg" x="65" y="12" width="40" height="40" decoding="sync"/><text x="85" y="76" text-anchor="middle" class="bt">S3 Standard</text><text x="85" y="96" text-anchor="middle" class="bs">よく使う</text></g>
+<g class="bin" id="s3-b1" transform="translate(235 60)"><rect width="170" height="200" rx="16"/><image href="./assets/aws-icons/s3-ia.svg" x="65" y="12" width="40" height="40" decoding="sync"/><text x="85" y="76" text-anchor="middle" class="bt">Standard-IA</text><text x="85" y="96" text-anchor="middle" class="bs">たまに使う</text></g>
+<g class="bin" id="s3-b2" transform="translate(450 60)"><rect width="170" height="200" rx="16"/><image href="./assets/aws-icons/s3-glacier.svg" x="65" y="12" width="40" height="40" decoding="sync"/><text x="85" y="76" text-anchor="middle" class="bt">S3 Glacier</text><text x="85" y="96" text-anchor="middle" class="bs">長期保管</text></g>
+<g id="s3-files"></g>
+<path class="arrow" d="M195 160h35M410 160h35"/>
+<g transform="translate(20 296)"><text class="bs" x="0" y="0">保管料</text><rect class="cost-bg" x="56" y="-12" width="564" height="14" rx="7"/><rect id="s3-cost" class="cost-fill" x="56" y="-12" width="564" height="14" rx="7"/></g>
+<text id="s3-day" class="dayt" x="320" y="34" text-anchor="middle">例：0日目</text>
+</svg>
               </div>
               <div class="lab-side">
                 <p class="step-count"><span class="cur">1</span> / <span class="tot">4</span></p>
@@ -241,25 +196,19 @@
             <div class="lab-panel" id="lp-3" role="tabpanel" aria-labelledby="lt-3" data-scene="vpc" hidden>
               <div class="lab-canvas">
                 <svg viewBox="0 0 640 340" class="scene" role="img" aria-label="VPCのパブリックサブネットとプライベートサブネットの通信経路の図">
-                  <rect class="vpc-box" x="130" y="16" width="500" height="308" rx="22" />
-                  <text class="asg-label" x="150" y="42">VPC</text>
-                  <rect class="sub pub" x="150" y="56" width="220" height="250" rx="16" />
-                  <text class="sub-t" x="164" y="80">パブリックサブネット</text>
-                  <rect class="sub priv" x="400" y="56" width="215" height="250" rx="16" />
-                  <text class="sub-t" x="414" y="80">プライベートサブネット</text>
-                  <g class="edges" fill="none">
-                    <path id="v-e1" d="M70 150 H100" /><path id="v-e2" d="M140 150 H190" />
-                    <path id="v-e3" d="M250 150 H430" /><path id="v-e4" d="M465 190 V245 H250" />
-                    <path id="v-e5" d="M190 245 H120 V170" /><path id="v-e6" d="M500 150 H530" />
-                  </g>
-                  <g class="node" id="v-user" transform="translate(10 110)"><rect width="60" height="80" rx="14" /><circle cx="30" cy="30" r="9" /><path d="M14 62c3-12 29-12 32 0" /><text x="30" y="74" text-anchor="middle">Internet</text></g>
-                  <g class="node aws" id="v-igw" transform="translate(100 130)"><rect width="40" height="40" rx="10" /><text x="20" y="58" text-anchor="middle">IGW</text></g>
-                  <g class="node aws" id="v-web" transform="translate(190 110)"><rect width="60" height="80" rx="14" /><rect x="14" y="16" width="32" height="30" rx="4" /><path d="M22 24h16M22 32h16" /><text x="30" y="74" text-anchor="middle">Web</text></g>
-                  <g class="node aws" id="v-nat" transform="translate(190 205)"><rect width="60" height="80" rx="14" /><path d="M18 40h24M34 30l10 10-10 10" /><text x="30" y="74" text-anchor="middle">NAT GW</text></g>
-                  <g class="node aws" id="v-app" transform="translate(430 110)"><rect width="70" height="80" rx="14" /><rect x="19" y="16" width="32" height="30" rx="4" /><path d="M27 24h16M27 32h16" /><text x="35" y="74" text-anchor="middle">App</text></g>
-                  <g class="node aws" id="v-db" transform="translate(530 110)"><rect width="60" height="80" rx="14" /><ellipse cx="30" cy="24" rx="14" ry="6" /><path d="M16 24v22c0 3 6 6 14 6s14-3 14-6V24" /><text x="30" y="74" text-anchor="middle">DB</text></g>
-                  <circle class="packet" r="8" cx="-20" cy="-20" />
-                </svg>
+<rect class="grp vpc" x="158" y="12" width="476" height="316" rx="6"/>
+<image href="./assets/aws-icons/grp-vpc.svg" x="158" y="12" width="32" height="32" decoding="sync"/><text class="grp-t" x="196" y="33">VPC</text>
+<rect class="grp pub" x="204" y="56" width="180" height="256" rx="6"/><image href="./assets/aws-icons/grp-public.svg" x="204" y="56" width="32" height="32" decoding="sync"/><text class="grp-t" x="244" y="77">パブリックサブネット</text>
+<rect class="grp priv" x="398" y="56" width="228" height="256" rx="6"/><image href="./assets/aws-icons/grp-private.svg" x="398" y="56" width="32" height="32" decoding="sync"/><text class="grp-t" x="438" y="77">プライベートサブネット</text>
+<g class="edges" fill="none"><path id="v-e1" d="M80 152 H120"/><path id="v-e2" d="M196 152 H228"/><path id="v-e3" d="M304 152 H414"/><path id="v-e4" d="M452 194 V256 H304"/><path id="v-e5" d="M228 256 H158 V194"/><path id="v-e6" d="M490 152 H530"/></g>
+<g class="node " id="v-user" transform="translate(4 110)"><rect width="76" height="84" rx="14"/><image href="./assets/aws-icons/user.svg" x="14" y="8" width="48" height="48" decoding="sync"/><text x="38" y="72" text-anchor="middle">ユーザー</text></g>
+<g class="node aws" id="v-igw" transform="translate(120 110)"><rect width="76" height="84" rx="14"/><image href="./assets/aws-icons/igw.svg" x="14" y="8" width="48" height="48" decoding="sync"/><text x="38" y="72" text-anchor="middle">IGW</text></g>
+<g class="node aws" id="v-web" transform="translate(228 110)"><rect width="76" height="84" rx="14"/><image href="./assets/aws-icons/ec2.svg" x="14" y="8" width="48" height="48" decoding="sync"/><text x="38" y="72" text-anchor="middle">Web</text></g>
+<g class="node aws" id="v-nat" transform="translate(228 214)"><rect width="76" height="84" rx="14"/><image href="./assets/aws-icons/nat.svg" x="14" y="8" width="48" height="48" decoding="sync"/><text x="38" y="72" text-anchor="middle">NAT GW</text></g>
+<g class="node aws" id="v-app" transform="translate(414 110)"><rect width="76" height="84" rx="14"/><image href="./assets/aws-icons/ec2.svg" x="14" y="8" width="48" height="48" decoding="sync"/><text x="38" y="72" text-anchor="middle">App</text></g>
+<g class="node aws" id="v-db" transform="translate(530 110)"><rect width="76" height="84" rx="14"/><image href="./assets/aws-icons/rds.svg" x="14" y="8" width="48" height="48" decoding="sync"/><text x="38" y="72" text-anchor="middle">DB</text></g>
+<circle class="packet" r="8" cx="-20" cy="-20"/>
+</svg>
               </div>
               <div class="lab-side">
                 <p class="step-count"><span class="cur">1</span> / <span class="tot">4</span></p>
@@ -505,7 +454,7 @@
         <a href="#top">ページの先頭へ ↑</a>
       </div>
       <div class="wrap footer-note">
-        <p>Amazon Web Services、AWSはAmazon.com, Inc.またはその関連会社の商標です。本アプリはAWSの公式・認定製品ではありません。</p>
+        <p>Amazon Web Services、AWSはAmazon.com, Inc.またはその関連会社の商標です。本アプリはAWSの公式・認定製品ではありません。図中のAWSアイコンは、AWS公式のArchitecture Iconsを改変せずに使用しています。</p>
         <small>© 2026 AWS判断ルールラボ</small>
       </div>
     </footer>

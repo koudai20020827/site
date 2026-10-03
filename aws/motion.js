@@ -135,7 +135,7 @@
       for (let n = 0; n < 3; n++) {
         const f = document.createElementNS(NS, "g");
         f.setAttribute("class", "s3-file");
-        f.innerHTML = `<rect x="${45 + n * 34}" y="${110 + (n % 2) * 8}" width="26" height="32" rx="5"/><path d="M${52 + n * 34} ${122 + (n % 2) * 8}h12M${52 + n * 34} ${130 + (n % 2) * 8}h12"/>`;
+        f.innerHTML = `<rect x="${45 + n * 34}" y="${186 + (n % 2) * 8}" width="26" height="32" rx="5"/><path d="M${52 + n * 34} ${198 + (n % 2) * 8}h12M${52 + n * 34} ${206 + (n % 2) * 8}h12"/>`;
         g.appendChild(f);
         files.push(f);
       }
@@ -210,11 +210,13 @@
     for (let n = 0; n < 6; n++) {
       const x = 200 + (n % 3) * 140;
       const y = 84 + Math.floor(n / 3) * 112;
+      const o = document.createElementNS(NS, "g");
+      o.setAttribute("transform", `translate(${x} ${y})`);
       const e = document.createElementNS(NS, "g");
       e.setAttribute("class", "sc-ec2" + (n < 2 ? " min" : ""));
-      e.setAttribute("transform", `translate(${x} ${y})`);
-      e.innerHTML = `<rect width="104" height="92" rx="16"/><rect class="scr" x="30" y="16" width="44" height="34" rx="5"/><text x="52" y="76" text-anchor="middle">EC2 #${n + 1}</text>`;
-      g.appendChild(e);
+      e.innerHTML = `<rect width="104" height="92" rx="16"/><image href="./assets/aws-icons/ec2.svg" x="28" y="10" width="48" height="48" alt=""/><text x="52" y="80" text-anchor="middle">EC2 #${n + 1}</text>`;
+      o.appendChild(e);
+      g.appendChild(o);
       slots.push(e);
     }
     let auto = !reduced;
@@ -324,11 +326,11 @@
     const root = $("#quiz");
     if (!root) return;
     const Q = [
-      { q: "ユーザーIDをキーに、プロフィールを高速に取得したい。表の結合は不要。", tags: ["キー検索", "JOIN不要", "高速"], opts: [["DynamoDB", "NoSQL"], ["RDS", "リレーショナルDB"], ["Redshift", "データウェアハウス"]], a: 0, why: "キーでの取得が中心でJOINが不要なら、キーバリュー型のDynamoDBが向きます。" },
-      { q: "注文・顧客・明細の表を結合して、条件検索や集計をしたい。", tags: ["表の結合", "SQL", "トランザクション"], opts: [["DynamoDB", "NoSQL"], ["RDS", "リレーショナルDB"], ["S3", "オブジェクトストレージ"]], a: 1, why: "表同士の関係をSQLで扱うなら、RDSなどのリレーショナルデータベースです。" },
-      { q: "画像や動画を大量に、安く、耐久性高く保存してWebで配信したい。", tags: ["大量", "低コスト", "静的コンテンツ"], opts: [["EBS", "EC2用ブロックストレージ"], ["S3", "オブジェクトストレージ"], ["EFS", "共有ファイルシステム"]], a: 1, why: "容量を気にせず保存でき、静的コンテンツ配信にも使えるのがS3です。" },
-      { q: "アクセス数の増減に合わせて、EC2の台数を自動で増減したい。", tags: ["自動増減", "可用性", "コスト最適化"], opts: [["Auto Scaling", "台数を自動調整"], ["CloudFront", "コンテンツ配信"], ["Route 53", "DNS"]], a: 0, why: "負荷に応じてインスタンス数を増減するのはAuto Scalingの役割です。" },
-      { q: "監査用の古いログを何年も保管したい。取り出しに数時間かかってもよい。", tags: ["長期保管", "最安", "低頻度"], opts: [["S3 Standard", "頻繁に使う"], ["S3 Glacier", "アーカイブ"], ["EBS", "ブロックストレージ"]], a: 1, why: "めったに取り出さない長期保管データは、保管料が安いGlacier系のクラスが向きます。" },
+      { q: "ユーザーIDをキーに、プロフィールを高速に取得したい。表の結合は不要。", tags: ["キー検索", "JOIN不要", "高速"], opts: [["DynamoDB", "NoSQL", "dynamodb"], ["RDS", "リレーショナルDB", "rds"], ["Redshift", "データウェアハウス", "redshift"]], a: 0, why: "キーでの取得が中心でJOINが不要なら、キーバリュー型のDynamoDBが向きます。" },
+      { q: "注文・顧客・明細の表を結合して、条件検索や集計をしたい。", tags: ["表の結合", "SQL", "トランザクション"], opts: [["DynamoDB", "NoSQL", "dynamodb"], ["RDS", "リレーショナルDB", "rds"], ["S3", "オブジェクトストレージ", "s3"]], a: 1, why: "表同士の関係をSQLで扱うなら、RDSなどのリレーショナルデータベースです。" },
+      { q: "画像や動画を大量に、安く、耐久性高く保存してWebで配信したい。", tags: ["大量", "低コスト", "静的コンテンツ"], opts: [["EBS", "EC2用ブロックストレージ", "ebs"], ["S3", "オブジェクトストレージ", "s3"], ["EFS", "共有ファイルシステム", "efs"]], a: 1, why: "容量を気にせず保存でき、静的コンテンツ配信にも使えるのがS3です。" },
+      { q: "アクセス数の増減に合わせて、EC2の台数を自動で増減したい。", tags: ["自動増減", "可用性", "コスト最適化"], opts: [["Auto Scaling", "台数を自動調整", "autoscaling"], ["CloudFront", "コンテンツ配信", "cloudfront"], ["Route 53", "DNS", "route53"]], a: 0, why: "負荷に応じてインスタンス数を増減するのはAuto Scalingの役割です。" },
+      { q: "監査用の古いログを何年も保管したい。取り出しに数時間かかってもよい。", tags: ["長期保管", "最安", "低頻度"], opts: [["S3 Standard", "頻繁に使う", "s3-standard"], ["S3 Glacier", "アーカイブ", "s3-glacier"], ["EBS", "ブロックストレージ", "ebs"]], a: 1, why: "めったに取り出さない長期保管データは、保管料が安いGlacier系のクラスが向きます。" },
     ];
     const el = {
       n: $("#quiz-n"), q: $("#quiz-q"), tags: $("#quiz-tags"), opts: $("#quiz-opts"),
@@ -347,12 +349,12 @@
         el.tags.appendChild(s);
       });
       el.opts.innerHTML = "";
-      d.opts.forEach(([name, sub], k) => {
+      d.opts.forEach(([name, sub, icon], k) => {
         const b = document.createElement("button");
         b.type = "button";
         b.className = "opt";
-        b.innerHTML = `<span></span><small></small>`;
-        b.firstChild.textContent = name;
+        b.innerHTML = `<img src="./assets/aws-icons/${icon}.svg" alt="" /><span></span><small></small>`;
+        b.children[1].textContent = name;
         b.lastChild.textContent = sub;
         b.addEventListener("click", () => pick(k));
         el.opts.appendChild(b);

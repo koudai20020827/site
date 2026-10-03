@@ -339,3 +339,22 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .decide .section-head h2 { font-size: clamp(28px, 3.6vw, 44px); }
 .hero-grid > *, .lab-panel > *, .decide-grid > *, .tour > *, .memory-grid > *, .feat-grid > *, .price-grid > *, .faq-grid > *, .start-inner > * { min-width: 0; }
 .chip.c3 { right: auto; left: 4%; bottom: 10%; }
+
+/* official AWS icons: used unmodified; cards and group frames follow the AWS architecture-diagram style */
+.node image, .h-node image { pointer-events: none; }
+.h-node rect { fill: #fff; stroke: rgba(36, 47, 62, 0.16); stroke-width: 1.5; }
+.node rect { stroke: rgba(36, 47, 62, 0.16); stroke-width: 1.5; }
+.node.aws rect { stroke: rgba(36, 47, 62, 0.16); }
+.node.on rect, .h-node.on rect { fill: #fff6e6; stroke: var(--orange); stroke-width: 3; }
+.grp { stroke-width: 2; }
+.grp.vpc { fill: rgba(140, 79, 255, 0.05); stroke: #8c4fff; }
+.grp.pub { fill: rgba(122, 161, 22, 0.08); stroke: #7aa116; }
+.grp.priv { fill: rgba(0, 164, 166, 0.07); stroke: #00a4a6; }
+.grp.asg { fill: rgba(237, 113, 0, 0.04); stroke: #ed7100; stroke-dasharray: 8 6; }
+.grp-t { font-size: 13px; font-weight: 700; fill: #232f3e; }
+.sc-ec2 rect { fill: #fff; stroke: rgba(36, 47, 62, 0.16); stroke-width: 1.5; }
+.sc-ec2 image { opacity: 0.22; transition: opacity 0.4s; }
+.sc-ec2.on image { opacity: 1; }
+.sc-ec2 text { fill: #8b96ac; }
+.opt img { width: 30px; height: 30px; flex: none; }
+.sc-ec2 { transform-box: fill-box; transform-origin: center; }
