@@ -330,7 +330,7 @@
       apply(nx);
     };
     const card = $(".lab-card");
-    ["pointerdown", "keydown", "input"].forEach((ev) =>
+    ["click", "keydown", "input"].forEach((ev) =>
       card.addEventListener(ev, () => (lab.auto = false)),
     );
     if ("IntersectionObserver" in window) {
@@ -351,11 +351,11 @@
     if (!root) return;
     // Rules and basics are taken from the app's own content (aws_judgment_rules.json).
     const Q = [
-      { q: "ユーザーIDをキーに、プロフィールを高速に取得したい。表の結合は不要。", tags: ["キー検索", "JOIN不要", "高速"], opts: [["DynamoDB", "NoSQL", "dynamodb"], ["RDS", "リレーショナルDB", "rds"], ["Redshift", "データウェアハウス", "redshift"]], a: 0, why: "キーでの取得が中心でJOINが不要なら、キーバリュー型のDynamoDBが向きます。", rule: ["キーで高速に引くならDynamoDB", "キー中心の大量アクセスでJOINが不要なら、DynamoDBを検討する。"], basic: ["dynamodb", "Amazon DynamoDB", "キーで高速に取得するNoSQL"] },
-      { q: "注文・顧客・明細の表を結合して、条件検索や更新をしたい。", tags: ["表の結合", "SQL", "更新"], opts: [["DynamoDB", "NoSQL", "dynamodb"], ["RDS", "リレーショナルDB", "rds"], ["S3", "オブジェクトストレージ", "s3"]], a: 1, why: "表同士の関係をSQLで扱うなら、RDSなどのリレーショナルデータベースです。", rule: ["データの形と処理からDBを選ぶ", "注文などの関係データを更新する基盤にはRDS、大量の履歴データを集計・分析するデータウェアハウスにはRedshiftを比較する。"], basic: ["rds", "Amazon RDS", "運用を任せるリレーショナルDB"] },
-      { q: "画像やログをオブジェクトとして大量に保存し、取得したい。", tags: ["オブジェクト", "大量", "低コスト"], opts: [["EBS", "EC2用ブロックストレージ", "ebs"], ["S3", "オブジェクトストレージ", "s3"], ["EFS", "共有ファイルシステム", "efs"]], a: 1, why: "オブジェクトとして保存・取得するならS3。EBSはEC2のディスク、EFSは複数のLinuxで共有するファイルです。", rule: ["保存形式と保持の必要性からストレージを選ぶ", "オブジェクトとして保存するならS3、EC2のディスクならEBS、複数のLinux環境で同じファイルを共有するならEFS。"], basic: ["s3", "Amazon S3", "ファイルをオブジェクトとして保存"] },
-      { q: "昼間はEC2の台数を増やし、夜間は減らしたい。", tags: ["台数を変える", "需要に合わせる", "コスト"], opts: [["Auto Scaling", "台数を自動調整", "autoscaling"], ["CloudFront", "コンテンツ配信", "cloudfront"], ["Route 53", "DNS", "route53"]], a: 0, why: "需要に合わせてEC2の台数を変えるのはAuto Scaling。リクエストを振り分けるのはELBの役割です。", rule: ["台数を変えるか、リクエストを分けるか", "需要に合わせてEC2台数を変えるのはAuto Scaling、リクエストを複数の宛先へ振り分けるのはELB。"], basic: ["autoscaling", "Amazon EC2 Auto Scaling", "メトリクスや時刻に応じて、EC2の台数を自動で増減"] },
-      { q: "バックアップを数年残したい。読むのは監査のときだけで、取り出しは待てる。", tags: ["長期保存", "低頻度", "復元を待てる"], opts: [["S3 Standard", "頻繁に使う", "s3-standard"], ["S3 Glacier", "アーカイブ", "s3-glacier"], ["EBS", "ブロックストレージ", "ebs"]], a: 1, why: "長期保存で復元を待てるなら、保管料が安いGlacier系のクラスを比較します。", rule: ["S3は取得の待ち時間とアクセス頻度で選ぶ", "即時取得が必要なら、低頻度はStandard-IA、頻度が変わるならIntelligent-Tiering。長期保存で復元を待てるならGlacier系を比較する。"], basic: ["s3", "Amazon S3", "ファイルをオブジェクトとして保存"] },
+      { svc: "dynamodb", ruleId: "dynamodb-key", q: "ユーザーIDをキーに、プロフィールを高速に取得したい。表の結合は不要。", tags: ["キー検索", "JOIN不要", "高速"], opts: [["DynamoDB", "NoSQL", "dynamodb"], ["RDS", "リレーショナルDB", "rds"], ["Redshift", "データウェアハウス", "redshift"]], a: 0, why: "キーでの取得が中心でJOINが不要なら、キーバリュー型のDynamoDBが向きます。", rule: ["キーで高速に引くならDynamoDB", "キー中心の大量アクセスでJOINが不要なら、DynamoDBを検討する。"], basic: ["dynamodb", "Amazon DynamoDB", "キーで高速に取得するNoSQL"] },
+      { svc: "rds", ruleId: "database-transaction-analysis", q: "注文・顧客・明細の表を結合して、条件検索や更新をしたい。", tags: ["表の結合", "SQL", "更新"], opts: [["DynamoDB", "NoSQL", "dynamodb"], ["RDS", "リレーショナルDB", "rds"], ["S3", "オブジェクトストレージ", "s3"]], a: 1, why: "表同士の関係をSQLで扱うなら、RDSなどのリレーショナルデータベースです。", rule: ["データの形と処理からDBを選ぶ", "注文などの関係データを更新する基盤にはRDS、大量の履歴データを集計・分析するデータウェアハウスにはRedshiftを比較する。"], basic: ["rds", "Amazon RDS", "運用を任せるリレーショナルDB"] },
+      { svc: "s3", ruleId: "storage-access-shape", q: "画像やログをオブジェクトとして大量に保存し、取得したい。", tags: ["オブジェクト", "大量", "低コスト"], opts: [["EBS", "EC2用ブロックストレージ", "ebs"], ["S3", "オブジェクトストレージ", "s3"], ["EFS", "共有ファイルシステム", "efs"]], a: 1, why: "オブジェクトとして保存・取得するならS3。EBSはEC2のディスク、EFSは複数のLinuxで共有するファイルです。", rule: ["保存形式と保持の必要性からストレージを選ぶ", "オブジェクトとして保存するならS3、EC2のディスクならEBS、複数のLinux環境で同じファイルを共有するならEFS。"], basic: ["s3", "Amazon S3", "ファイルをオブジェクトとして保存"] },
+      { svc: "autoscaling", ruleId: "scale-vs-distribute", q: "昼間はEC2の台数を増やし、夜間は減らしたい。", tags: ["台数を変える", "需要に合わせる", "コスト"], opts: [["Auto Scaling", "台数を自動調整", "autoscaling"], ["CloudFront", "コンテンツ配信", "cloudfront"], ["Route 53", "DNS", "route53"]], a: 0, why: "需要に合わせてEC2の台数を変えるのはAuto Scaling。リクエストを振り分けるのはELBの役割です。", rule: ["台数を変えるか、リクエストを分けるか", "需要に合わせてEC2台数を変えるのはAuto Scaling、リクエストを複数の宛先へ振り分けるのはELB。"], basic: ["autoscaling", "Amazon EC2 Auto Scaling", "メトリクスや時刻に応じて、EC2の台数を自動で増減"] },
+      { svc: "s3", ruleId: "s3-class", q: "バックアップを数年残したい。読むのは監査のときだけで、取り出しは待てる。", tags: ["長期保存", "低頻度", "復元を待てる"], opts: [["S3 Standard", "頻繁に使う", "s3-standard"], ["S3 Glacier", "アーカイブ", "s3-glacier"], ["EBS", "ブロックストレージ", "ebs"]], a: 1, why: "長期保存で復元を待てるなら、保管料が安いGlacier系のクラスを比較します。", rule: ["S3は取得の待ち時間とアクセス頻度で選ぶ", "即時取得が必要なら、低頻度はStandard-IA、頻度が変わるならIntelligent-Tiering。長期保存で復元を待てるならGlacier系を比較する。"], basic: ["s3", "Amazon S3", "ファイルをオブジェクトとして保存"] },
     ];
     const el = {
       n: $("#quiz-n"), q: $("#quiz-q"), tags: $("#quiz-tags"), opts: $("#quiz-opts"), auto: $("#quiz-auto"),
@@ -367,10 +367,12 @@
     let i = 0;
     let score = 0;
     let phase = "ask";
-    let touched = false;
+    let lastTouch = 0; // 0 = never touched; auto demo resumes after the visitor goes idle
     let visible = false;
     let timer = null;
     let finished = false;
+    const IDLE = 25000;
+    const touched = () => lastTouch && Date.now() - lastTouch < IDLE;
 
     function render() {
       const d = Q[i];
@@ -463,28 +465,39 @@
     }
     function schedule() {
       clearTimeout(timer);
-      if (touched || reduced || !visible || document.hidden) return;
+      if (reduced || !visible || document.hidden) return;
+      if (touched()) {
+        timer = setTimeout(schedule, 2000);
+        return;
+      }
       const wait = phase === "ask" ? 2600 : 7500;
       timer = setTimeout(() => {
+        if (touched()) return schedule();
         if (phase === "ask") {
           const b = $$(".opt", el.opts)[Q[i].a];
           if (b) b.classList.add("pre");
           timer = setTimeout(() => {
+            if (touched() || phase !== "ask") return schedule();
             pick(Q[i].a);
             schedule();
           }, 900);
           return;
         }
+        if (el.auto && !reduced) el.auto.hidden = false;
         advance(true);
         schedule();
       }, wait);
     }
     el.next.addEventListener("click", () => advance(false));
-    ["pointerdown", "keydown"].forEach((ev) =>
+    $("#qr-rule-btn").addEventListener("click", () => {
+      if (!finished) window.openTrial && window.openTrial(Q[i].svc, { tab: "rules", rule: Q[i].ruleId });
+    });
+    $("#qr-basic-btn").addEventListener("click", () => {
+      if (!finished) window.openTrial && window.openTrial(Q[i].svc, { tab: "basics" });
+    });
+    ["click", "keydown"].forEach((ev) =>
       root.addEventListener(ev, () => {
-        if (touched) return;
-        touched = true;
-        clearTimeout(timer);
+        lastTouch = Date.now();
         $$(".opt", el.opts).forEach((b) => b.classList.remove("pre"));
         if (el.auto) el.auto.hidden = true;
       }),
@@ -498,6 +511,234 @@
       }, { threshold: 0.45 }).observe(root);
       document.addEventListener("visibilitychange", schedule);
     }
+  })();
+
+
+  /* ---------- trial panel: app basics + judgment rules for a clicked icon ---------- */
+  (function trial() {
+    const dlg = $("#trial");
+    if (!dlg || typeof dlg.showModal !== "function") return;
+    const inner = $("#trial-inner");
+    // sprite symbol id -> service id in trial.json
+    const SVC = {
+      cloudfront: "cloudfront", elb: "elb", ec2: "ec2", rds: "rds", dynamodb: "dynamodb",
+      s3: "s3", "s3-standard": "s3", "s3-ia": "s3", "s3-glacier": "s3",
+      autoscaling: "autoscaling", "grp-asg": "autoscaling",
+      igw: "vpc", nat: "vpc", "grp-vpc": "vpc",
+      redshift: "redshift", ebs: "ebs", efs: "efs", route53: "route53",
+    };
+    const ICON = { vpc: "grp-vpc" };
+    const LABEL = { cloudfront: "CloudFront", elb: "Elastic Load Balancing", ec2: "EC2", rds: "RDS", dynamodb: "DynamoDB", s3: "S3", autoscaling: "Auto Scaling", vpc: "VPC", redshift: "Redshift", ebs: "EBS", efs: "EFS", route53: "Route 53" };
+    let data = null;
+    let loading = null;
+    const load = () =>
+      loading ||
+      (loading = fetch("./data/trial.json")
+        .then((r) => {
+          if (!r.ok) throw new Error(r.status);
+          return r.json();
+        })
+        .then((d) => (data = d))
+        .catch((e) => {
+          loading = null;
+          throw e;
+        }));
+
+    const h = (tag, cls, text) => {
+      const e = document.createElement(tag);
+      if (cls) e.className = cls;
+      if (text != null) e.textContent = text;
+      return e;
+    };
+    const ul = (items, cls) => {
+      const u = h("ul", cls);
+      items.forEach((t) => u.appendChild(h("li", null, t)));
+      return u;
+    };
+
+    function basics(s, topicIdx) {
+      const wrap = h("div", "tr-panel");
+      const t = s.topics[topicIdx];
+      if (!t) {
+        wrap.appendChild(h("p", "tr-empty", "このサービスの基本知識は、アプリで確認できます。"));
+        return wrap;
+      }
+      if (s.topics.length > 1) {
+        const chips = h("div", "tr-chips");
+        s.topics.forEach((x, k) => {
+          const b = h("button", "tr-chip", x.subtitle || x.title);
+          b.type = "button";
+          b.setAttribute("aria-pressed", String(k === topicIdx));
+          b.addEventListener("click", () => render(s, "basics", { topic: k }));
+          chips.appendChild(b);
+        });
+        wrap.appendChild(chips);
+      }
+      wrap.appendChild(h("h4", "tr-h", t.title));
+      t.points.forEach((p) => {
+        const box = h("div", "tr-point");
+        box.appendChild(h("p", "tr-pt", p.title));
+        box.appendChild(ul(p.bullets));
+        wrap.appendChild(box);
+      });
+      if (t.comparisons.length) {
+        const cmp = h("div", "tr-cmp");
+        t.comparisons.forEach((c) => {
+          const row = h("div", "tr-cmp-row");
+          row.appendChild(h("strong", null, c.name));
+          row.appendChild(h("span", null, c.purpose));
+          row.appendChild(h("em", null, "注意：" + c.caution));
+          cmp.appendChild(row);
+        });
+        wrap.appendChild(cmp);
+      }
+      const tk = h("p", "tr-take");
+      tk.appendChild(h("b", null, "ひとことで"));
+      tk.appendChild(document.createTextNode(t.takeaway));
+      wrap.appendChild(tk);
+      if (t.source) {
+        const a = h("a", "tr-src", "AWS公式ドキュメント ↗");
+        a.href = t.source;
+        a.target = "_blank";
+        a.rel = "noopener";
+        wrap.appendChild(a);
+      }
+      return wrap;
+    }
+
+    function rules(s, focus) {
+      const wrap = h("div", "tr-panel");
+      if (!s.rules.length) {
+        wrap.appendChild(h("p", "tr-empty", "このサービス単独の判断ルールはありません。他のサービスとの使い分けは、アプリの判断ルールで確認できます。"));
+        return wrap;
+      }
+      s.rules.forEach((r) => {
+        const card = h("article", "tr-rule" + (r.id === focus ? " is-focus" : ""));
+        card.dataset.rule = r.id;
+        card.appendChild(h("h4", "tr-h", r.title));
+        card.appendChild(h("p", "tr-sum", r.summary));
+        const c = h("div", "tr-when");
+        c.appendChild(h("span", "tr-k ok", "こんなとき"));
+        c.appendChild(ul(r.choose));
+        card.appendChild(c);
+        if (r.avoid.length) {
+          const a = h("div", "tr-when");
+          a.appendChild(h("span", "tr-k ng", "注意したいとき"));
+          a.appendChild(ul(r.avoid));
+          card.appendChild(a);
+        }
+        if (r.trap.length) {
+          const t = h("p", "tr-trap");
+          t.appendChild(h("b", null, "ひっかけ"));
+          t.appendChild(document.createTextNode(r.trap[0]));
+          card.appendChild(t);
+        }
+        wrap.appendChild(card);
+      });
+      return wrap;
+    }
+
+    function render(s, tab, opt = {}) {
+      const id = Object.keys(data).find((k) => data[k] === s);
+      inner.textContent = "";
+      const head = h("div", "tr-head");
+      const ico = document.createElement("div");
+      ico.className = "tr-ico";
+      ico.innerHTML = `<svg viewBox="0 0 80 80" aria-hidden="true"><use href="#ic-${ICON[id] || id}" width="80" height="80"/></svg>`;
+      head.appendChild(ico);
+      const hd = h("div", "tr-title");
+      hd.appendChild(h("p", "tr-cat", s.category + "・お試し表示"));
+      const t = h("h3", null, s.name);
+      t.id = "trial-title";
+      hd.appendChild(t);
+      hd.appendChild(h("p", "tr-desc", s.description));
+      head.appendChild(hd);
+      const x = h("button", "tr-close", "×");
+      x.type = "button";
+      x.setAttribute("aria-label", "閉じる");
+      x.addEventListener("click", () => dlg.close());
+      head.appendChild(x);
+      inner.appendChild(head);
+
+      const tabs = h("div", "tr-tabs");
+      tabs.setAttribute("role", "tablist");
+      [["basics", "基本知識", s.topicsTotal], ["rules", "判断ルール", s.rulesTotal]].forEach(([k, label, n]) => {
+        const b = h("button", null, label);
+        b.type = "button";
+        b.setAttribute("role", "tab");
+        b.setAttribute("aria-selected", String(k === tab));
+        b.appendChild(h("i", null, String(n)));
+        b.addEventListener("click", () => render(s, k));
+        tabs.appendChild(b);
+      });
+      inner.appendChild(tabs);
+
+      const body = h("div", "tr-body");
+      body.appendChild(tab === "basics" ? basics(s, opt.topic || 0) : rules(s, opt.rule));
+      inner.appendChild(body);
+
+      const foot = h("div", "tr-foot");
+      foot.appendChild(h("p", null, `アプリでは「${s.name}」の基本${s.topicsTotal}テーマと判断ルール${s.rulesTotal}件を、図解・演習つきで学べます。ここでは一部のお試し表示です。`));
+      const go = h("a", "button button-small", "配信について");
+      go.href = "#start";
+      go.addEventListener("click", () => dlg.close());
+      foot.appendChild(go);
+      inner.appendChild(foot);
+
+      if (opt.rule) {
+        const f = $(".is-focus", body);
+        if (f) requestAnimationFrame(() => f.scrollIntoView({ block: "center" }));
+      }
+    }
+
+    let lastFocus = null;
+    window.openTrial = function (id, opt = {}) {
+      if (!SVC[id] && !LABEL[id]) return;
+      const key = SVC[id] || id;
+      lastFocus = document.activeElement;
+      inner.textContent = "";
+      inner.appendChild(h("p", "tr-empty", "読み込み中…"));
+      if (!dlg.open) dlg.showModal();
+      load()
+        .then((d) => d[key] && render(d[key], opt.tab || "basics", opt))
+        .catch(() => {
+          inner.textContent = "";
+          const p = h("p", "tr-empty", "お試しデータを読み込めませんでした。時間をおいて再度お試しください。");
+          const x = h("button", "button button-small", "閉じる");
+          x.type = "button";
+          x.addEventListener("click", () => dlg.close());
+          inner.append(p, x);
+        });
+    };
+    dlg.addEventListener("click", (e) => {
+      if (e.target === dlg) dlg.close();
+    });
+    dlg.addEventListener("close", () => lastFocus && lastFocus.focus && lastFocus.focus());
+
+    // make every service icon in the diagrams a button
+    $$("svg use").forEach((u) => {
+      if (u.closest("symbol, .opt, .qr-card, .trial")) return;
+      const sym = (u.getAttribute("href") || "").replace("#ic-", "");
+      const key = SVC[sym];
+      if (!key) return;
+      const g = u.closest(".node, .h-node, .sc-ec2, .bin") || u;
+      if (g.classList.contains("clickable")) return;
+      g.classList.add("clickable");
+      g.setAttribute("role", "button");
+      g.setAttribute("tabindex", "0");
+      g.setAttribute("aria-label", `${LABEL[key]}の基本知識と判断ルールをお試しで見る`);
+      const open = (e) => {
+        e.stopPropagation();
+        window.openTrial(key, {});
+      };
+      g.addEventListener("click", open);
+      g.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          open(e);
+        }
+      });
+    });
   })();
 
   /* ---------- app tour ---------- */
@@ -547,7 +788,7 @@
     const tourEl = $(".tour");
     let touched = false;
     let seen = false;
-    ["pointerdown", "keydown"].forEach((ev) => tourEl.addEventListener(ev, () => (touched = true)));
+    ["click", "keydown"].forEach((ev) => tourEl.addEventListener(ev, () => (touched = true)));
     if (!reduced && "IntersectionObserver" in window) {
       new IntersectionObserver((es) => (seen = es[0].isIntersecting), { threshold: 0.4 }).observe(tourEl);
       setInterval(() => {

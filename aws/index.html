@@ -87,7 +87,7 @@
 </svg>
             <span class="chip c1">動く図解</span>
             <span class="chip c2">条件で選ぶ</span>
-            <span class="chip c3">解説→基本へ</span>
+            <span class="chip c3">アイコンをタップ</span>
           </div>
         </div>
       </section>
@@ -101,6 +101,7 @@
             <p class="section-lead">
               アプリの図解は、状態を切り替えながら仕組みを確認できます。ここではその一部を、ブラウザで体験できます。
             </p>
+            <p class="try-hint"><b>TRY</b>図のアイコンをタップすると、アプリの基本知識と判断ルールをお試しで見られます。</p>
           </header>
 
           <div class="lab-card reveal">
@@ -251,15 +252,15 @@
                 <p class="quiz-verdict" id="quiz-verdict"></p>
                 <p class="qr-why" id="quiz-why"></p>
                 <div class="qr-cards">
-                  <div class="qr-card rule">
-                    <span class="k">アプリの判断ルール</span>
+                  <button type="button" class="qr-card rule" id="qr-rule-btn">
+                    <span class="k">アプリの判断ルール<em>お試しで見る →</em></span>
                     <strong id="qr-rule"></strong>
                     <span class="d" id="qr-rule-sum"></span>
-                  </div>
-                  <div class="qr-card basic">
-                    <span class="k">アプリの基本知識</span>
+                  </button>
+                  <button type="button" class="qr-card basic" id="qr-basic-btn">
+                    <span class="k">アプリの基本知識<em>お試しで見る →</em></span>
                     <div class="b-row"><span id="qr-basic-icon"></span><div><strong id="qr-basic-name"></strong><span class="d" id="qr-basic-desc"></span></div></div>
-                  </div>
+                  </button>
                 </div>
                 <button type="button" class="button" id="quiz-next">次の問題へ</button>
               </div>
@@ -394,63 +395,47 @@
       <!-- VOICE -->
       <section class="section voice" id="voice">
         <div class="wrap">
-          <header class="section-head center reveal">
+          <header class="section-head reveal">
             <p class="eyebrow">06 ・ VOICE</p>
-            <h2>使う人ごとに、<span class="grad">続く理由がある。</span></h2>
-            <p class="section-lead">入門、社内の会話、SAA対策、すき間時間。それぞれの学習シーンを、アプリが支えます。</p>
+            <h2><span>使う人ごとに、</span><span class="grad">続く理由がある。</span></h2>
+            <p class="section-lead">入門、SAA対策、解説の読み込み、すき間時間。それぞれの学習シーンを、AWS判断ルールラボが支えます。</p>
             <p class="notice">公開前のため、実際の利用者レビューではありません。想定した利用者像と、その声のイメージです。</p>
           </header>
           <div class="review-grid">
             <article class="reveal">
               <div class="review-head">
-                <div class="review-avatar p-blue" aria-hidden="true"></div>
+                <div class="review-avatar business-person" aria-hidden="true"></div>
                 <div><strong>AWS入門</strong><small>はじめてのクラウド</small></div>
               </div>
-              <p>EC2もS3も名前しか知らなかったけど、図が動くのでリクエストの通り道が一回で入りました。知らない用語もその場で意味が出るので、調べて止まらないのがありがたいです。</p>
+              <p>EC2もS3も名前しか知らなかったけど、図が動くのでリクエストの通り道が一回で入りました。知らない用語もその場で意味が出るのが助かります。</p>
               <span>20代・新卒エンジニア</span>
             </article>
             <article class="reveal">
               <div class="review-head">
-                <div class="review-avatar p-orange" aria-hidden="true"></div>
-                <div><strong>社内の会話</strong><small>用語についていく</small></div>
+                <div class="review-avatar student-person" aria-hidden="true"></div>
+                <div><strong>SAA対策</strong><small>条件で選べるようになる</small></div>
               </div>
-              <p>打ち合わせでALBやリージョンが出ても全体像がつながらなかったので、まず無料の基本を一通り見ました。図で流れをつかめて、会話の中身が分かるようになってきました。</p>
-              <span>20代・IT企業の営業</span>
+              <p>DynamoDBかRDSかで毎回迷っていました。条件→サービスの順で整理されているので、問題文のどこを見ればいいか分かってきます。</p>
+              <span>20代・インフラ運用2年目</span>
             </article>
             <article class="reveal">
               <div class="review-head">
-                <div class="review-avatar p-purple" aria-hidden="true"></div>
-                <div><strong>SAA対策</strong><small>選べるようになる</small></div>
-              </div>
-              <p>DynamoDBかRDSか、といった「どっちを選ぶ？」で毎回迷っていました。条件→サービスの順で整理されているので、問題文のどこを見ればいいかが少しずつ分かってきます。</p>
-              <span>20代・インフラ運用</span>
-            </article>
-            <article class="reveal">
-              <div class="review-head">
-                <div class="review-avatar p-teal" aria-hidden="true"></div>
+                <div class="review-avatar speaker-person" aria-hidden="true"></div>
                 <div><strong>解説まで</strong><small>間違えた理由を言える</small></div>
               </div>
-              <p>解いたあとも問題文が残って、見るべき条件が光るのが助かります。「可用性の条件を見落とした」と自分で言えるようになって、そのまま基本に戻れるのも楽です。</p>
+              <p>解いたあとも問題文が残って、見るべき条件が光るのが助かります。間違えた理由を自分で言えるようになりました。</p>
               <span>30代・Webアプリ開発者</span>
             </article>
             <article class="reveal">
               <div class="review-head">
-                <div class="review-avatar p-green" aria-hidden="true"></div>
+                <div class="review-avatar exam-person" aria-hidden="true"></div>
                 <div><strong>すき間時間</strong><small>「まだ」だけ戻る</small></div>
               </div>
-              <p>全部を何周もする時間はないので、「まだ」のところだけ戻れるのが合っています。電車の中で3つ4つ確認するだけでも、前に進んでいる感じがあります。</p>
+              <p>全部を何周もする時間はないので、「まだ」だけ戻れるのが合っています。電車の中で3つ4つ確認するだけでも進んでいる感じです。</p>
               <span>30代・通勤1時間のエンジニア</span>
             </article>
-            <article class="reveal">
-              <div class="review-head">
-                <div class="review-avatar p-red" aria-hidden="true"></div>
-                <div><strong>まず無料で</strong><small>合うか確かめてから</small></div>
-              </div>
-              <p>サブスクだと続くか不安でしたが、基本とCP模試130問が無料で、追加は買い切り。まず触って合うか確かめて、必要になったら足せるのが気楽です。</p>
-              <span>20代・情報系の大学生</span>
-            </article>
           </div>
-          <p class="fine center">想定した利用場面であり、学習成果や試験合格を保証するものではありません。</p>
+          <p class="fine">想定した利用場面であり、学習成果や試験合格を保証するものではありません。</p>
         </div>
       </section>
 
@@ -491,22 +476,67 @@
 
       <!-- FAQ -->
       <section class="section faq" id="faq">
-        <div class="wrap faq-grid">
+        <div class="wrap">
           <header class="section-head reveal">
-            <p class="eyebrow">08 ・ QUESTIONS</p>
-            <h2>気になること。</h2>
+            <p class="eyebrow">08 ・ FAQ</p>
+            <h2><span>はじめる前の不安を、</span><span class="grad">ここで解消。</span></h2>
           </header>
-          <div class="faq-list reveal">
-            <details><summary>どこまで無料で使えますか？<i aria-hidden="true">+</i></summary><p>CPの基本知識・判断ルールと、模試第1・2回の合計130問が無料の対象です。CPの追加模試とSAA教材セットは、別途購入する構成です。</p></details>
-            <details><summary>AWS初心者でも使えますか？<i aria-hidden="true">+</i></summary><p>基本編でサービスの役割を図と一緒に確認し、判断ルールで使い分けを学べます。用語補足もあるので、わからない言葉を確認しながら進められます。</p></details>
-            <details><summary>基本知識と判断ルールの違いは？<i aria-hidden="true">+</i></summary><p>基本知識は「何をするサービスか、どう動くか」を学ぶ教材。判断ルールは「どんな条件なら、それを選ぶか」を学ぶ教材です。演習の解説から両方へ戻り、理解をつなげられます。</p></details>
-            <details><summary>記憶状態は、どう復習につながりますか？<i aria-hidden="true">+</i></summary><p>「まだ」は今すぐ、「覚えた」は時間をおいた再確認へ。「自信あり」は期限なしで維持し、関連する演習で間違えた場合は復習候補に戻します。記憶状態は自分の手応えの記録で、合格率の予測ではありません。</p></details>
-            <details><summary>AWS公式のアプリですか？<i aria-hidden="true">+</i></summary><p>AWS公式アプリではありません。独自に作成した教材・模試を提供し、根拠を確認するためのAWS公式ドキュメントへのリンクを用意しています。学習成果や試験合格を保証するものではありません。</p></details>
+          <div class="faq-chat">
+            <article class="faq-item reveal">
+              <div class="faq-q">
+                <i class="review-avatar student-person" aria-hidden="true"></i>
+                <div class="faq-bubble question"><small>まず試したい大学生さん</small><p>どこまで無料で使えますか？</p></div>
+              </div>
+              <div class="faq-a">
+                <div class="faq-bubble answer"><small><b>ベストアンサー</b>AWS判断ルールラボ</small><p><strong>CPの基本知識・判断ルールと、模試第1・2回の合計130問</strong>が無料の対象です。CPの追加模試とSAA教材セットは、別途購入する構成です。</p></div>
+                <img src="./assets/app-icon.png" width="40" height="40" alt="" aria-hidden="true" />
+              </div>
+            </article>
+            <article class="faq-item reveal">
+              <div class="faq-q">
+                <i class="review-avatar business-person" aria-hidden="true"></i>
+                <div class="faq-bubble question"><small>ITに詳しくない営業さん</small><p>AWS初心者でも使えますか？</p></div>
+              </div>
+              <div class="faq-a">
+                <div class="faq-bubble answer"><small><b>ベストアンサー</b>AWS判断ルールラボ</small><p>基本編でサービスの役割を<strong>図と一緒に</strong>確認し、判断ルールで使い分けを学べます。用語補足もあるので、わからない言葉を確認しながら進められます。</p></div>
+                <img src="./assets/app-icon.png" width="40" height="40" alt="" aria-hidden="true" />
+              </div>
+            </article>
+            <article class="faq-item reveal">
+              <div class="faq-q">
+                <i class="review-avatar speaker-person" aria-hidden="true"></i>
+                <div class="faq-bubble question"><small>SAAに挑戦するエンジニアさん</small><p>基本知識と判断ルールの違いは？</p></div>
+              </div>
+              <div class="faq-a">
+                <div class="faq-bubble answer"><small><b>ベストアンサー</b>AWS判断ルールラボ</small><p>基本知識は<strong>「何をするサービスか、どう動くか」</strong>、判断ルールは<strong>「どんな条件なら、それを選ぶか」</strong>を学ぶ教材です。演習の解説から両方へ戻り、理解をつなげられます。</p></div>
+                <img src="./assets/app-icon.png" width="40" height="40" alt="" aria-hidden="true" />
+              </div>
+            </article>
+            <article class="faq-item reveal">
+              <div class="faq-q">
+                <i class="review-avatar exam-person" aria-hidden="true"></i>
+                <div class="faq-bubble question"><small>すき間時間で学ぶ社会人さん</small><p>記憶状態は、どう復習につながりますか？</p></div>
+              </div>
+              <div class="faq-a">
+                <div class="faq-bubble answer"><small><b>ベストアンサー</b>AWS判断ルールラボ</small><p>「まだ」は今すぐ、「覚えた」は時間をおいた再確認へ。「自信あり」は期限なしで維持し、関連する演習で間違えた場合は<strong>復習候補に戻します</strong>。記憶状態は自分の手応えの記録で、合格率の予測ではありません。</p></div>
+                <img src="./assets/app-icon.png" width="40" height="40" alt="" aria-hidden="true" />
+              </div>
+            </article>
+            <article class="faq-item reveal">
+              <div class="faq-q">
+                <i class="review-avatar business-person" aria-hidden="true"></i>
+                <div class="faq-bubble question"><small>慎重派さん</small><p>AWS公式のアプリですか？</p></div>
+              </div>
+              <div class="faq-a">
+                <div class="faq-bubble answer"><small><b>ベストアンサー</b>AWS判断ルールラボ</small><p><strong>AWS公式アプリではありません。</strong>独自に作成した教材・模試を提供し、根拠を確認するためのAWS公式ドキュメントへのリンクを用意しています。学習成果や試験合格を保証するものではありません。</p></div>
+                <img src="./assets/app-icon.png" width="40" height="40" alt="" aria-hidden="true" />
+              </div>
+            </article>
           </div>
         </div>
       </section>
 
-      <!-- START -->
+            <!-- START -->
       <section class="start" id="start">
         <div class="wrap start-inner reveal">
           <div>
@@ -525,6 +555,9 @@
       </section>
     </main>
 
+    <dialog id="trial" class="trial" aria-labelledby="trial-title">
+      <div class="tr-inner" id="trial-inner"></div>
+    </dialog>
     <footer class="footer">
       <div class="wrap footer-in">
         <a class="brand" href="#top"><img src="./assets/app-icon.png" width="28" height="28" loading="lazy" alt="" /><span>AWS判断ルールラボ</span></a>
