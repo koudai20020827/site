@@ -3,639 +3,509 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AWS判断ルールラボ | 暗記の先に、選べる力を。</title>
+    <title>AWS判断ルールラボ | 動く図解で学ぶAWS</title>
     <meta
       name="description"
-      content="AWSの知識を、問題が解ける力へ。図解・判断ルール・演習・復習がつながるiOS学習アプリ。CPの基本と模試130問は無料。CP・SAAに対応。"
+      content="リクエストの流れ、Auto Scaling、S3、VPC。AWSの仕組みを動く図解で理解し、条件で選び、演習で確かめるiOS学習アプリ。CPの基本と模試130問は無料。"
     />
-    <meta name="theme-color" content="#f8f7f3" />
+    <meta name="theme-color" content="#001dff" />
     <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="AWS判断ルールラボ | 暗記の先に、選べる力を。"
-    />
+    <meta property="og:title" content="AWS判断ルールラボ | 動く図解で学ぶAWS" />
     <meta
       property="og:description"
-      content="図で理解し、条件で選び、演習で確かめる。CP・SAAの学びを、ひとつにつなぐ。"
+      content="動かして理解する。条件で選ぶ。演習で確かめる。CP・SAA対応のAWS学習アプリ。"
     />
     <meta property="og:url" content="https://aieitan.com/aws/" />
-    <meta
-      property="og:image"
-      content="https://aieitan.com/aws/assets/app-icon.png"
-    />
+    <meta property="og:image" content="https://aieitan.com/aws/assets/app-icon.png" />
     <meta name="twitter:card" content="summary" />
     <link rel="canonical" href="https://aieitan.com/aws/" />
     <link rel="icon" href="./assets/app-icon.png" />
-    <link rel="stylesheet" href="./styles.css" />
-    <script src="./motion.js" defer></script>
-    <noscript
-      ><style>
-        .scenario-control,
-        .tour-tabs,
-        .tour-pagination {
-          display: none;
-        }
-        .tour-panel[hidden] {
-          display: block !important;
-        }
-        .tour-panel {
-          min-height: 0;
-          padding-bottom: 24px;
-        }
-      </style></noscript
-    >
+    <script>document.documentElement.classList.add("js")</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+    />
+    <link rel="stylesheet" href="./styles.css?v=lab-20261004" />
+    <script src="./motion.js?v=lab-20261004" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">本文へスキップ</a>
     <header class="header">
       <div class="header-inner wrap">
-        <a class="brand" href="#" aria-label="AWS判断ルールラボ トップ"
-          ><img
-            src="./assets/app-icon.png"
-            width="38"
-            height="38"
-            alt=""
-          /><span>AWS<span class="brand-sub">判断ルールラボ</span></span></a
-        >
+        <a class="brand" href="#top" aria-label="AWS判断ルールラボ トップ">
+          <img src="./assets/app-icon.png" width="36" height="36" alt="" />
+          <span>AWS判断ルールラボ</span>
+        </a>
         <nav aria-label="メインナビゲーション">
-          <a href="#approach">学び方</a><a href="#features">教材の特徴</a
-          ><a href="#pricing">料金</a>
+          <a href="#lab">動く図解</a>
+          <a href="#decide">判断</a>
+          <a href="#app">アプリ</a>
+          <a href="#memory">記憶</a>
+          <a href="#pricing">料金</a>
+          <a href="#faq">FAQ</a>
         </nav>
-        <a class="button button-small" href="#start"
-          >配信について <span aria-hidden="true">↗</span></a
-        >
+        <a class="button button-small" href="#start">配信について</a>
       </div>
     </header>
+
     <main id="main">
-      <section class="hero wrap" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow">
-            <span class="eyebrow-line"></span> AWS CERTIFICATION STUDY
-          </p>
-          <p class="hero-kicker">AWSの知識を、問題が解ける力へ。</p>
-          <h1 id="hero-title">
-            暗記の先に、<br /><span class="title-emphasis">選べる力</span>を。
-          </h1>
-          <p class="hero-lead">
-            知っているのに、選択肢で迷ってしまう。<br />その一歩を、図解と判断ルールでつなぐ。<br />理解から演習まで、ひとつのアプリで。
-          </p>
-          <div class="hero-actions">
-            <a class="button" href="#approach"
-              >学び方を見る <span aria-hidden="true">↓</span></a
-            ><span class="hero-free"
-              >CPの基本＋模試130問<span>無料ではじめられます</span></span
-            >
-          </div>
-          <div class="hero-meta">
-            <span>iOS APP</span><span>CP / SAA 対応</span
-            ><span class="release-dot">公開準備中</span>
-          </div>
-        </div>
-        <div class="hero-visual">
-          <div class="board-topline">
-            <span>FROM KNOWLEDGE TO DECISION</span><span>01 — 02</span>
-          </div>
-          <div class="study-board">
-            <div class="board-heading">
-              <span class="board-symbol" aria-hidden="true">↗</span
-              ><span
-                >知識を、判断につなぐ。<small
-                  >DATABASE / データベースの選び方</small
-                ></span
-              ><span class="sample-tag">学習例</span>
-            </div>
-            <div class="scenario">
-              <span class="small-label">こんな要件なら？</span>
-              <p id="scenario-text">
-                ユーザーIDをキーに、<br />プロフィールを<strong
-                  >高速に取得。</strong
-                >
-              </p>
-              <span id="scenario-detail">テーブルの結合（JOIN）は不要。</span>
-            </div>
-            <div class="decision-lines" aria-hidden="true">
-              <svg viewBox="0 0 400 50" fill="none" preserveAspectRatio="none">
-                <path class="path-left" d="M200 0V20H95V48" />
-                <path class="path-right" d="M200 20H305V48" />
-                <circle cx="200" cy="2" r="3" /></svg
-              ><span>条件から、選び分ける</span>
-            </div>
-            <div class="service-options">
-              <div class="service-option is-selected" data-service="dynamo">
-                <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
-                  <ellipse cx="16" cy="8" rx="10" ry="4" />
-                  <path
-                    d="M6 8v16c0 2.2 4.5 4 10 4s10-1.8 10-4V8M6 16c0 2.2 4.5 4 10 4s10-1.8 10-4"
-                  /></svg
-                ><strong>DynamoDB</strong><span>キーで取得する</span
-                ><b class="service-check" aria-hidden="true">✓</b>
-              </div>
-              <div class="service-option" data-service="rds">
-                <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
-                  <rect x="4" y="5" width="24" height="22" rx="2" />
-                  <path d="M4 12h24M4 19h24M12 5v22" /></svg
-                ><strong>RDS</strong><span>表を結合して扱う</span
-                ><b class="service-check" aria-hidden="true">✓</b>
-              </div>
-            </div>
-            <p class="board-insight" id="scenario-insight" aria-live="polite">
-              <span aria-hidden="true">↳</span>
-              キー中心のアクセスなら、DynamoDB。
+      <!-- HERO -->
+      <section class="hero" id="top">
+        <div class="hero-blobs" aria-hidden="true"><i></i><i></i></div>
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <p class="pill"><b>iOS</b> CP / SAA 対応・公開準備中</p>
+            <h1>
+              <span>AWSは、</span>
+              <span class="grad">動かして</span>
+              <span>覚える。</span>
+            </h1>
+            <p class="hero-lead">
+              リクエストが流れ、サーバーが増え、データが移っていく。
+              <br />仕組みを<strong>動く図解</strong>で理解して、条件で選び、演習で確かめる。
             </p>
-            <div class="scenario-control">
-              <span>条件を変えてみる</span>
-              <div role="group" aria-label="学習例の条件">
-                <button type="button" data-scenario="0" aria-pressed="true">
-                  キーで取得</button
-                ><button type="button" data-scenario="1" aria-pressed="false">
-                  表を結合
-                </button>
-              </div>
+            <div class="hero-actions">
+              <a class="button" href="#lab">動く図解を触ってみる</a>
+              <a class="button button-ghost" href="#app">アプリを見る</a>
             </div>
+            <dl class="metrics">
+              <div><dt>152</dt><dd>基本テーマ<br />全カードに図解</dd></div>
+              <div><dt>64</dt><dd>判断ルール<br />条件→選択</dd></div>
+              <div><dt>650</dt><dd>模試の問題<br />全10回・独自作成</dd></div>
+            </dl>
           </div>
-          <div class="board-bottomline">
-            <span class="board-note"
-              >名前を覚える。その先の「選ぶ理由」まで。</span
-            ><span aria-hidden="true">↗</span>
+
+          <div class="hero-stage" aria-label="Webシステムの動く図解">
+            <svg class="hero-arch" viewBox="0 0 560 420" role="img" aria-label="ユーザーのリクエストがCloudFront、ロードバランサー、EC2を通ってデータベースへ届く流れ">
+              <defs>
+                <linearGradient id="hg" x1="0" x2="1">
+                  <stop offset="0" stop-color="#001dff" />
+                  <stop offset="1" stop-color="#2f7cff" />
+                </linearGradient>
+              </defs>
+              <g class="h-edges" fill="none" stroke-width="3" stroke-linecap="round">
+                <path id="he1" d="M80 210 H180" />
+                <path id="he2" d="M240 210 H300" />
+                <path id="he3a" d="M360 210 C400 210 390 120 440 120" />
+                <path id="he3b" d="M360 210 C400 210 390 300 440 300" />
+              </g>
+              <g class="h-node" transform="translate(20 170)">
+                <rect width="60" height="80" rx="16" />
+                <circle cx="30" cy="30" r="9" /><path d="M14 62c3-12 29-12 32 0" />
+                <text x="30" y="76" text-anchor="middle">User</text>
+              </g>
+              <g class="h-node n-aws" transform="translate(180 170)">
+                <rect width="60" height="80" rx="16" />
+                <circle cx="30" cy="32" r="14" /><path d="M16 32h28M30 18c-8 8-8 20 0 28M30 18c8 8 8 20 0 28" />
+                <text x="30" y="76" text-anchor="middle">CloudFront</text>
+              </g>
+              <g class="h-node n-aws" transform="translate(300 170)">
+                <rect width="60" height="80" rx="16" />
+                <path d="M16 26h28M16 38h28M16 50h28" /><circle cx="30" cy="26" r="2" /><circle cx="30" cy="38" r="2" /><circle cx="30" cy="50" r="2" />
+                <text x="30" y="76" text-anchor="middle">ALB</text>
+              </g>
+              <g class="h-node n-aws h-ec2 a" transform="translate(440 80)">
+                <rect width="60" height="80" rx="16" />
+                <rect x="14" y="16" width="32" height="30" rx="4" /><path d="M22 24h16M22 32h16" />
+                <text x="30" y="76" text-anchor="middle">EC2</text>
+              </g>
+              <g class="h-node n-aws h-ec2 b" transform="translate(440 260)">
+                <rect width="60" height="80" rx="16" />
+                <rect x="14" y="16" width="32" height="30" rx="4" /><path d="M22 24h16M22 32h16" />
+                <text x="30" y="76" text-anchor="middle">EC2</text>
+              </g>
+              <circle class="h-packet" id="hp" r="7" cx="80" cy="210" />
+              <circle class="h-packet p2" id="hp2" r="7" cx="80" cy="210" />
+            </svg>
+            <span class="chip c1">動く図解</span>
+            <span class="chip c2">条件で選ぶ</span>
+            <span class="chip c3">解説→基本へ</span>
           </div>
-          <p class="visual-caption">学習内容をもとにした説明用のデモです。</p>
-        </div>
-        <div class="hero-foot">
-          <span>UNDERSTAND. DECIDE. PRACTICE. REMEMBER.</span
-          ><a href="#approach"
-            >学びをつなぐ <span aria-hidden="true">↓</span></a
-          >
         </div>
       </section>
-      <section class="stats" aria-label="収録教材の規模">
-        <div class="wrap stats-inner">
-          <div class="stats-label">
-            理解を支える、<br />充実した教材。<span>CP・SAA 全収録内容</span>
-          </div>
-          <div class="stat">
-            <strong>152<span>テーマ</span></strong>
-            <p>図解で学ぶ基本知識</p>
-          </div>
-          <div class="stat">
-            <strong>64<span>ルール</span></strong>
-            <p>条件から選ぶ判断の軸</p>
-          </div>
-          <div class="stat">
-            <strong>650<span>問</span></strong>
-            <p>全10回の独自模試</p>
-          </div>
-        </div>
-        <p class="wrap stats-note">
-          有料教材を含みます。模試は独自に作成した問題です。
-        </p>
-      </section>
-      <section id="approach" class="approach section wrap">
-        <div class="section-heading split-heading">
-          <div>
-            <p class="eyebrow">01 / THE APPROACH</p>
-            <h2>知識がつながると、<br />答えの理由が見えてくる。</h2>
-          </div>
-          <p class="section-intro">
-            基本を読んで、問題を解くだけでは埋まらない溝。<br
-              class="desktop-break"
-            />「どんな条件で、何を選ぶか」を間に置くことで、<br
-              class="desktop-break"
-            />覚えた知識を、使える知識に変えていきます。
-          </p>
-        </div>
-        <ol class="learning-path">
-          <li>
-            <span>01 / UNDERSTAND</span>
-            <h3>図で、理解する。</h3>
-            <p>役割と仕組みをつかむ</p>
-          </li>
-          <li>
-            <span>02 / DECIDE</span>
-            <h3>条件で、選ぶ。</h3>
-            <p>似たサービスを使い分ける</p>
-          </li>
-          <li>
-            <span>03 / PRACTICE</span>
-            <h3>問題で、確かめる。</h3>
-            <p>正解の決め手を見つける</p>
-          </li>
-          <li>
-            <span>04 / REMEMBER</span>
-            <h3>苦手に、戻る。</h3>
-            <p>迷った知識から復習する</p>
-          </li>
-        </ol>
-        <div class="product-tour" id="journey">
-          <div class="tour-visual">
-            <div class="tour-visual-top">
-              <span>INSIDE THE APP</span><span id="journey-index">01 / 04</span>
-            </div>
-            <div class="screenshot-phone">
-              <img
-                id="app-screen"
-                src="./assets/screen-basics.png"
-                width="553"
-                height="1200"
-                loading="lazy"
-                alt="基本の図解画面。KMSキーの状態とアプリへの影響を図で確認。"
-              />
-            </div>
-            <p class="screen-caption">
-              実際のアプリ画面・開発中の内容を含みます
-            </p>
-          </div>
-          <div class="tour-content">
-            <div
-              class="tour-tabs"
-              role="tablist"
-              aria-label="アプリの学習ステップ"
-            >
-              <button
-                id="tab-0"
-                type="button"
-                role="tab"
-                data-step="0"
-                aria-selected="true"
-                aria-controls="panel-0"
-              >
-                基本</button
-              ><button
-                id="tab-1"
-                type="button"
-                role="tab"
-                data-step="1"
-                aria-selected="false"
-                aria-controls="panel-1"
-                tabindex="-1"
-              >
-                判断</button
-              ><button
-                id="tab-2"
-                type="button"
-                role="tab"
-                data-step="2"
-                aria-selected="false"
-                aria-controls="panel-2"
-                tabindex="-1"
-              >
-                演習</button
-              ><button
-                id="tab-3"
-                type="button"
-                role="tab"
-                data-step="3"
-                aria-selected="false"
-                aria-controls="panel-3"
-                tabindex="-1"
-              >
-                記憶
-              </button>
-            </div>
-            <article
-              id="panel-0"
-              role="tabpanel"
-              aria-labelledby="tab-0"
-              tabindex="0"
-              class="tour-panel"
-            >
-              <p class="chapter">01 <span>UNDERSTAND</span></p>
-              <h3>頭の中で想像するより、<br />図で見たほうが、早い。</h3>
-              <p>
-                サービスの役割や構成を、文字と図の両方で確認。全ての基本カードに図解があるから、初めての仕組みも具体的にイメージできます。
-              </p>
-              <div class="tour-detail">
-                <span>たとえば、KMSのキー管理。</span>
-                <p>
-                  「削除予約」「取消し」「再開」と状態を切り替えて、アプリへの影響を確認。何が起きるかまで、つながって理解できます。
-                </p>
-              </div>
-              <span class="tour-tag">152テーマの基本知識</span>
-            </article>
-            <article
-              id="panel-1"
-              role="tabpanel"
-              aria-labelledby="tab-1"
-              tabindex="0"
-              class="tour-panel"
-              hidden
-            >
-              <p class="chapter">02 <span>DECIDE</span></p>
-              <h3>「何をする？」から、<br />「いつ選ぶ？」へ。</h3>
-              <p>
-                サービス名を知っていても、似た選択肢には迷うもの。「場面 →
-                選ぶサービス → 理由」の順に、使い分けの軸を整理します。
-              </p>
-              <div class="tour-detail">
-                <span>たとえば、DynamoDBとRDS。</span>
-                <p>
-                  キーで取得するのか、複数の表を結合するのか。問題の条件と選択をつなげ、選ぶ理由だけでなく注意点も確認します。
-                </p>
-              </div>
-              <span class="tour-tag">64ルール・171の場面</span>
-            </article>
-            <article
-              id="panel-2"
-              role="tabpanel"
-              aria-labelledby="tab-2"
-              tabindex="0"
-              class="tour-panel"
-              hidden
-            >
-              <p class="chapter">03 <span>PRACTICE</span></p>
-              <h3>正解した。その理由まで、<br />自分のものに。</h3>
-              <p>
-                解答後も問題文を表示し、見るべき条件をハイライト。「なんとなく正解」を、根拠のある判断に変えていきます。
-              </p>
-              <div class="tour-detail">
-                <span>解説から、そのまま基本知識へ。</span>
-                <p>
-                  見落とした条件や、迷った選択肢を確認。関連する教材に戻れるので、間違いを次の一問に活かせます。
-                </p>
-              </div>
-              <span class="tour-tag">CP 260問・SAA 390問の模試</span>
-            </article>
-            <article
-              id="panel-3"
-              role="tabpanel"
-              aria-labelledby="tab-3"
-              tabindex="0"
-              class="tour-panel"
-              hidden
-            >
-              <p class="chapter">04 <span>REMEMBER</span></p>
-              <h3>全部を何度も、より。<br />いま必要なところを。</h3>
-              <p>
-                「まだ・覚えた・自信あり」で手応えを記録。再確認の時期と演習の誤答から、次に復習したい知識が見えてきます。
-              </p>
-              <div class="tour-detail">
-                <span>勉強する場所を、迷わず決める。</span>
-                <p>
-                  苦手な基本知識や判断ルールを見つけて、もう一度。限られた勉強時間を、理解が曖昧なところに使えます。
-                </p>
-              </div>
-              <span class="tour-tag">手応えと誤答に合わせた復習</span>
-              <p class="fine-print">
-                記憶状態は自己評価であり、合格率の予測ではありません。
-              </p>
-            </article>
-            <div class="tour-pagination">
-              <span>図解から復習まで、ひとつの流れに。</span
-              ><button
-                type="button"
-                id="next-step"
-                aria-label="次の学習ステップを見る"
-              >
-                →
-              </button>
-            </div>
-          </div>
-        </div>
-        <noscript
-          ><p class="nojs-note">
-            画面の切替と学習デモの操作にはJavaScriptを使用します。基本・判断・演習・復習の概要は上の学習フローでご確認いただけます。
-          </p></noscript
-        >
-      </section>
-      <section id="features" class="features section">
+
+      <!-- LAB -->
+      <section class="section lab" id="lab">
         <div class="wrap">
-          <div class="section-heading split-heading">
-            <div>
-              <p class="eyebrow">02 / DESIGNED FOR LEARNING</p>
-              <h2>勉強の手間を減らす。<br />理解する時間を増やす。</h2>
-            </div>
-            <p class="section-intro">
-              わからない言葉を調べる。根拠を探す。<br />教材を行き来する小さな手間を、<br />学びの流れの中で解決します。
+          <header class="section-head center reveal">
+            <p class="eyebrow">01 ・ INTERACTIVE DIAGRAMS</p>
+            <h2>読むより、<span class="grad">見たほうが早い。</span></h2>
+            <p class="section-lead">
+              アプリの図解は、状態を切り替えながら仕組みを確認できます。ここではその一部を、ブラウザで体験できます。
             </p>
-          </div>
-          <div class="feature-grid">
-            <article class="feature-main">
-              <div class="feature-main-copy">
-                <p class="feature-label">PRACTICE AT YOUR PACE</p>
-                <h3>じっくり学ぶ日も、<br />本番を意識する日も。</h3>
-                <p>
-                  毎問解説で理解を深める。まとめ採点で力を確かめる。サービス別の演習と資格別の模試を、目的に合わせて選べます。
-                </p>
+          </header>
+
+          <div class="lab-card reveal">
+            <div class="lab-tabs" role="tablist" aria-label="動く図解の選択">
+              <button type="button" role="tab" id="lt-0" aria-selected="true" aria-controls="lp-0" data-lab="0"><i>01</i>リクエストの流れ</button>
+              <button type="button" role="tab" id="lt-1" aria-selected="false" aria-controls="lp-1" data-lab="1" tabindex="-1"><i>02</i>Auto Scaling</button>
+              <button type="button" role="tab" id="lt-2" aria-selected="false" aria-controls="lp-2" data-lab="2" tabindex="-1"><i>03</i>S3のコスト最適化</button>
+              <button type="button" role="tab" id="lt-3" aria-selected="false" aria-controls="lp-3" data-lab="3" tabindex="-1"><i>04</i>VPCの通り道</button>
+            </div>
+
+            <!-- Scene 0: request flow -->
+            <div class="lab-panel" id="lp-0" role="tabpanel" aria-labelledby="lt-0" data-scene="flow">
+              <div class="lab-canvas">
+                <svg viewBox="0 0 640 340" class="scene" role="img" aria-label="3層構成のWebシステムの図">
+                  <g class="edges" fill="none">
+                    <path id="f-e1" d="M70 170 H160" /><path id="f-e2" d="M230 170 H310" />
+                    <path id="f-e3" d="M380 170 C410 170 410 90 450 90" /><path id="f-e4" d="M380 170 C410 170 410 250 450 250" />
+                    <path id="f-e5" d="M520 90 C560 90 560 170 580 170" /><path id="f-e6" d="M520 250 C560 250 560 170 580 170" />
+                  </g>
+                  <g class="node" id="f-user" transform="translate(10 130)"><rect width="60" height="80" rx="14" /><circle cx="30" cy="30" r="9" /><path d="M14 62c3-12 29-12 32 0" /><text x="30" y="74" text-anchor="middle">ユーザー</text></g>
+                  <g class="node aws" id="f-cf" transform="translate(160 130)"><rect width="70" height="80" rx="14" /><circle cx="35" cy="32" r="14" /><path d="M21 32h28M35 18c-8 8-8 20 0 28M35 18c8 8 8 20 0 28" /><text x="35" y="74" text-anchor="middle">CloudFront</text></g>
+                  <g class="node aws" id="f-alb" transform="translate(310 130)"><rect width="70" height="80" rx="14" /><path d="M20 26h30M20 38h30M20 50h30" /><text x="35" y="74" text-anchor="middle">ALB</text></g>
+                  <g class="node aws" id="f-ec1" transform="translate(450 50)"><rect width="70" height="80" rx="14" /><rect x="19" y="16" width="32" height="30" rx="4" /><path d="M27 24h16M27 32h16" /><text x="35" y="74" text-anchor="middle">EC2 (AZ-a)</text></g>
+                  <g class="node aws" id="f-ec2" transform="translate(450 210)"><rect width="70" height="80" rx="14" /><rect x="19" y="16" width="32" height="30" rx="4" /><path d="M27 24h16M27 32h16" /><text x="35" y="74" text-anchor="middle">EC2 (AZ-c)</text></g>
+                  <g class="node aws" id="f-db" transform="translate(580 130)"><rect width="56" height="80" rx="14" /><ellipse cx="28" cy="24" rx="14" ry="6" /><path d="M14 24v22c0 3 6 6 14 6s14-3 14-6V24" /><text x="28" y="74" text-anchor="middle">RDS</text></g>
+                  <circle class="packet" r="8" cx="-20" cy="-20" />
+                </svg>
               </div>
-              <div class="exam-visual">
-                <div class="exam-row">
-                  <span class="exam-level"
-                    >CP<small>Cloud Practitioner</small></span
-                  ><strong>4<span>回 / 260問</span></strong>
+              <div class="lab-side">
+                <p class="step-count"><span class="cur">1</span> / <span class="tot">5</span></p>
+                <h3 class="step-title"></h3>
+                <p class="step-body"></p>
+                <p class="step-point"></p>
+                <div class="lab-controls">
+                  <button type="button" class="ctl prev" aria-label="前のステップ">←</button>
+                  <button type="button" class="ctl play" aria-label="自動再生を切り替え" aria-pressed="true">❚❚ 一時停止</button>
+                  <button type="button" class="ctl next" aria-label="次のステップ">→</button>
                 </div>
-                <div class="exam-row">
-                  <span class="exam-level"
-                    >SAA<small>Solutions Architect Associate</small></span
-                  ><strong>6<span>回 / 390問</span></strong>
+                <ol class="dots" aria-hidden="true"></ol>
+              </div>
+            </div>
+
+            <!-- Scene 1: auto scaling -->
+            <div class="lab-panel" id="lp-1" role="tabpanel" aria-labelledby="lt-1" data-scene="scaling" hidden>
+              <div class="lab-canvas">
+                <svg viewBox="0 0 640 340" class="scene" role="img" aria-label="アクセス数に応じてEC2が増減する図">
+                  <rect class="asg-box" x="170" y="30" width="460" height="280" rx="22" />
+                  <text class="asg-label" x="190" y="58">Auto Scaling グループ（最小2・最大6）</text>
+                  <g id="sc-nodes"></g>
+                  <g transform="translate(20 80)">
+                    <rect class="gauge-bg" x="0" y="0" width="110" height="180" rx="14" />
+                    <rect id="sc-fill" class="gauge-fill" x="10" y="170" width="90" height="0" rx="8" />
+                    <text x="55" y="204" text-anchor="middle" class="gauge-t">アクセス</text>
+                  </g>
+                </svg>
+              </div>
+              <div class="lab-side">
+                <p class="step-count">LIVE</p>
+                <h3>アクセスに合わせて、台数が変わる。</h3>
+                <p class="step-body">スライダーでアクセス量を動かすと、必要な台数だけEC2が起動します。触らなければ、昼夜の波を自動で再生します。</p>
+                <label class="range">
+                  <span>アクセス量 <b id="sc-load-text">自動</b></span>
+                  <input type="range" id="sc-range" min="0" max="100" value="20" aria-label="アクセス量" />
+                </label>
+                <p class="step-point" id="sc-count">起動中のEC2：2台</p>
+                <button type="button" class="ctl" id="sc-auto" aria-pressed="true">自動再生に戻す</button>
+              </div>
+            </div>
+
+            <!-- Scene 2: S3 lifecycle -->
+            <div class="lab-panel" id="lp-2" role="tabpanel" aria-labelledby="lt-2" data-scene="s3" hidden>
+              <div class="lab-canvas">
+                <svg viewBox="0 0 640 340" class="scene" role="img" aria-label="S3のデータが時間とともに安価なストレージクラスへ移る図">
+                  <g class="bins">
+                    <g class="bin" id="s3-b0" transform="translate(20 70)"><rect width="170" height="190" rx="16" /><text x="85" y="34" text-anchor="middle" class="bt">S3 Standard</text><text x="85" y="56" text-anchor="middle" class="bs">よく使う</text></g>
+                    <g class="bin" id="s3-b1" transform="translate(235 70)"><rect width="170" height="190" rx="16" /><text x="85" y="34" text-anchor="middle" class="bt">Standard-IA</text><text x="85" y="56" text-anchor="middle" class="bs">たまに使う</text></g>
+                    <g class="bin" id="s3-b2" transform="translate(450 70)"><rect width="170" height="190" rx="16" /><text x="85" y="34" text-anchor="middle" class="bt">Glacier</text><text x="85" y="56" text-anchor="middle" class="bs">長期保管</text></g>
+                  </g>
+                  <g id="s3-files"></g>
+                  <path class="arrow" d="M195 165h35M410 165h35" />
+                  <g transform="translate(20 285)">
+                    <text class="bs" x="0" y="0">保管料</text>
+                    <rect class="cost-bg" x="56" y="-12" width="564" height="14" rx="7" />
+                    <rect id="s3-cost" class="cost-fill" x="56" y="-12" width="564" height="14" rx="7" />
+                  </g>
+                  <text id="s3-day" class="dayt" x="320" y="30" text-anchor="middle">0日目</text>
+                </svg>
+              </div>
+              <div class="lab-side">
+                <p class="step-count"><span class="cur">1</span> / <span class="tot">4</span></p>
+                <h3 class="step-title"></h3>
+                <p class="step-body"></p>
+                <p class="step-point"></p>
+                <div class="lab-controls">
+                  <button type="button" class="ctl prev" aria-label="前のステップ">←</button>
+                  <button type="button" class="ctl play" aria-label="自動再生を切り替え" aria-pressed="true">❚❚ 一時停止</button>
+                  <button type="button" class="ctl next" aria-label="次のステップ">→</button>
                 </div>
-                <div class="exam-foot">
-                  <span>各模試 65問</span><span>毎問解説 / まとめ採点</span>
+                <ol class="dots" aria-hidden="true"></ol>
+              </div>
+            </div>
+
+            <!-- Scene 3: VPC -->
+            <div class="lab-panel" id="lp-3" role="tabpanel" aria-labelledby="lt-3" data-scene="vpc" hidden>
+              <div class="lab-canvas">
+                <svg viewBox="0 0 640 340" class="scene" role="img" aria-label="VPCのパブリックサブネットとプライベートサブネットの通信経路の図">
+                  <rect class="vpc-box" x="130" y="16" width="500" height="308" rx="22" />
+                  <text class="asg-label" x="150" y="42">VPC</text>
+                  <rect class="sub pub" x="150" y="56" width="220" height="250" rx="16" />
+                  <text class="sub-t" x="164" y="80">パブリックサブネット</text>
+                  <rect class="sub priv" x="400" y="56" width="215" height="250" rx="16" />
+                  <text class="sub-t" x="414" y="80">プライベートサブネット</text>
+                  <g class="edges" fill="none">
+                    <path id="v-e1" d="M70 150 H100" /><path id="v-e2" d="M140 150 H190" />
+                    <path id="v-e3" d="M250 150 H430" /><path id="v-e4" d="M465 190 V245 H250" />
+                    <path id="v-e5" d="M190 245 H120 V170" /><path id="v-e6" d="M500 150 H530" />
+                  </g>
+                  <g class="node" id="v-user" transform="translate(10 110)"><rect width="60" height="80" rx="14" /><circle cx="30" cy="30" r="9" /><path d="M14 62c3-12 29-12 32 0" /><text x="30" y="74" text-anchor="middle">Internet</text></g>
+                  <g class="node aws" id="v-igw" transform="translate(100 130)"><rect width="40" height="40" rx="10" /><text x="20" y="58" text-anchor="middle">IGW</text></g>
+                  <g class="node aws" id="v-web" transform="translate(190 110)"><rect width="60" height="80" rx="14" /><rect x="14" y="16" width="32" height="30" rx="4" /><path d="M22 24h16M22 32h16" /><text x="30" y="74" text-anchor="middle">Web</text></g>
+                  <g class="node aws" id="v-nat" transform="translate(190 205)"><rect width="60" height="80" rx="14" /><path d="M18 40h24M34 30l10 10-10 10" /><text x="30" y="74" text-anchor="middle">NAT GW</text></g>
+                  <g class="node aws" id="v-app" transform="translate(430 110)"><rect width="70" height="80" rx="14" /><rect x="19" y="16" width="32" height="30" rx="4" /><path d="M27 24h16M27 32h16" /><text x="35" y="74" text-anchor="middle">App</text></g>
+                  <g class="node aws" id="v-db" transform="translate(530 110)"><rect width="60" height="80" rx="14" /><ellipse cx="30" cy="24" rx="14" ry="6" /><path d="M16 24v22c0 3 6 6 14 6s14-3 14-6V24" /><text x="30" y="74" text-anchor="middle">DB</text></g>
+                  <circle class="packet" r="8" cx="-20" cy="-20" />
+                </svg>
+              </div>
+              <div class="lab-side">
+                <p class="step-count"><span class="cur">1</span> / <span class="tot">4</span></p>
+                <h3 class="step-title"></h3>
+                <p class="step-body"></p>
+                <p class="step-point"></p>
+                <div class="lab-controls">
+                  <button type="button" class="ctl prev" aria-label="前のステップ">←</button>
+                  <button type="button" class="ctl play" aria-label="自動再生を切り替え" aria-pressed="true">❚❚ 一時停止</button>
+                  <button type="button" class="ctl next" aria-label="次のステップ">→</button>
                 </div>
+                <ol class="dots" aria-hidden="true"></ol>
+              </div>
+            </div>
+          </div>
+          <p class="fine center">学習用に簡略化した図です。実際の構成は要件によって変わります。</p>
+        </div>
+      </section>
+
+      <!-- DECIDE -->
+      <section class="section decide" id="decide">
+        <div class="wrap decide-grid">
+          <header class="section-head reveal">
+            <p class="eyebrow">02 ・ DECIDE BY CONDITION</p>
+            <h2>サービス名の暗記より、<br /><span class="grad">条件から選ぶ。</span></h2>
+            <p class="section-lead">
+              試験でも実務でも、問われるのは「この条件なら何を選ぶか」。要件を読んで、使うサービスを選んでみてください。アプリの判断ルールも、この形で学びます。
+            </p>
+            <p class="fine">64ルール・171の場面。ここでは5問を抜粋した体験版です。</p>
+          </header>
+          <div class="quiz reveal" id="quiz" aria-live="polite">
+            <div class="quiz-top"><span>こんな要件なら？</span><span id="quiz-n">1 / 5</span></div>
+            <p class="quiz-q" id="quiz-q"></p>
+            <div class="quiz-tags" id="quiz-tags"></div>
+            <div class="quiz-opts" id="quiz-opts"></div>
+            <div class="quiz-result" id="quiz-result" hidden>
+              <p class="quiz-verdict" id="quiz-verdict"></p>
+              <p id="quiz-why"></p>
+              <button type="button" class="button" id="quiz-next">次の問題へ</button>
+            </div>
+            <div class="quiz-bar" aria-hidden="true"><i id="quiz-prog"></i></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- APP -->
+      <section class="section app" id="app">
+        <div class="wrap">
+          <header class="section-head center reveal">
+            <p class="eyebrow">03 ・ INSIDE THE APP</p>
+            <h2>理解 → 判断 → 演習 → 復習。<br /><span class="grad">ひとつの流れで。</span></h2>
+          </header>
+          <div class="tour reveal">
+            <div class="tour-phone">
+              <div class="phone">
+                <img id="app-screen" src="./assets/screen-basics.png" width="553" height="1200" loading="lazy" alt="基本の図解画面。KMSキーの状態とアプリへの影響を図で確認。" />
+              </div>
+              <p class="fine center">実際のアプリ画面・開発中の内容を含みます</p>
+            </div>
+            <div class="tour-body">
+              <div class="tour-tabs" role="tablist" aria-label="アプリの学習ステップ">
+                <button type="button" role="tab" id="tab-0" aria-selected="true" aria-controls="panel-0">基本</button>
+                <button type="button" role="tab" id="tab-1" aria-selected="false" aria-controls="panel-1" tabindex="-1">判断</button>
+                <button type="button" role="tab" id="tab-2" aria-selected="false" aria-controls="panel-2" tabindex="-1">演習</button>
+                <button type="button" role="tab" id="tab-3" aria-selected="false" aria-controls="panel-3" tabindex="-1">記憶</button>
+              </div>
+              <article id="panel-0" role="tabpanel" aria-labelledby="tab-0" tabindex="0" class="tour-panel">
+                <p class="chapter">01 UNDERSTAND</p>
+                <h3>想像するより、図で見たほうが早い。</h3>
+                <p>サービスの役割や構成を、文字と図の両方で確認。全ての基本カードに、状態を切り替えられる図解があります。</p>
+                <p class="callout"><b>たとえば、KMSのキー管理。</b>「削除予約」「取消し」「再開」と切り替えて、アプリへの影響まで確認できます。</p>
+                <span class="tag">152テーマの基本知識</span>
+              </article>
+              <article id="panel-1" role="tabpanel" aria-labelledby="tab-1" tabindex="0" class="tour-panel" hidden>
+                <p class="chapter">02 DECIDE</p>
+                <h3>「何をする？」から「いつ選ぶ？」へ。</h3>
+                <p>場面 → 選ぶサービス → 理由の順に、使い分けの軸を整理。全ルールに条件から候補への分岐図があり、枝をタップして具体例を比較できます。</p>
+                <p class="callout"><b>たとえば、DynamoDBとRDS。</b>キーで取得するのか、表を結合するのか。選ぶ理由と注意点まで確認します。</p>
+                <span class="tag">64ルール・171の場面</span>
+              </article>
+              <article id="panel-2" role="tabpanel" aria-labelledby="tab-2" tabindex="0" class="tour-panel" hidden>
+                <p class="chapter">03 PRACTICE</p>
+                <h3>正解の、その理由まで自分のものに。</h3>
+                <p>解答後も問題文を表示し、見るべき条件をハイライト。「なんとなく正解」を根拠のある判断に変えます。</p>
+                <p class="callout"><b>解説から、基本知識へ。</b>見落とした条件や迷った選択肢から、関連教材へ戻れます。</p>
+                <span class="tag">CP 260問・SAA 390問の模試</span>
+              </article>
+              <article id="panel-3" role="tabpanel" aria-labelledby="tab-3" tabindex="0" class="tour-panel" hidden>
+                <p class="chapter">04 REMEMBER</p>
+                <h3>全部を何度も、より、いま必要なところを。</h3>
+                <p>「まだ・覚えた・自信あり」で手応えを記録。再確認の時期と、関連演習の誤答から、次に復習したい知識が見えてきます。</p>
+                <p class="callout"><b>勉強する場所を、迷わず決める。</b>理解が曖昧なところに、限られた時間を使えます。</p>
+                <span class="tag">手応えと誤答に合わせた復習</span>
+                <p class="fine">記憶状態は自己評価であり、合格率の予測ではありません。</p>
+              </article>
+              <div class="tour-next">
+                <span>図解から復習まで、ひとつの流れに。</span>
+                <button type="button" id="next-step" aria-label="次の学習ステップを見る">→</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MEMORY -->
+      <section class="section memory" id="memory">
+        <div class="wrap memory-grid">
+          <div class="curve-card reveal" aria-label="忘却曲線と復習のイメージ図">
+            <p class="curve-title">復習のタイミングのイメージ</p>
+            <svg viewBox="0 0 520 280" class="curve" role="img" aria-label="時間とともに記憶が下がり、復習のたびに持ち直す図">
+              <path class="axis" d="M40 20V240H500" fill="none" />
+              <path id="curve-path" class="c-line" pathLength="1000" fill="none" d="M40 40 C80 40 100 150 150 190 L150 50 C190 50 215 130 260 165 L260 60 C300 60 330 110 380 135 L380 70 C420 70 450 95 500 105" />
+              <g id="curve-dots"></g>
+              <text x="40" y="262" class="ax-t">時間 →</text>
+              <text x="52" y="30" class="ax-t">記憶</text>
+              <g class="rv" id="rv1"><circle cx="150" cy="190" r="6" /><text x="150" y="214" text-anchor="middle">復習</text></g>
+              <g class="rv" id="rv2"><circle cx="260" cy="165" r="6" /><text x="260" y="189" text-anchor="middle">復習</text></g>
+              <g class="rv" id="rv3"><circle cx="380" cy="135" r="6" /><text x="380" y="159" text-anchor="middle">復習</text></g>
+            </svg>
+            <p class="fine">説明用の模式図です。実際の再確認時期はアプリの記憶状態に従います。</p>
+          </div>
+          <header class="section-head reveal">
+            <p class="eyebrow">04 ・ REVIEW WHEN NEEDED</p>
+            <h2>忘れかけたころに、<br /><span class="grad">もう一度。</span></h2>
+            <p class="section-lead">手応えを3段階で記録。覚えたつもりのところと、演習で間違えたところから、復習候補が自動で浮かびます。</p>
+            <ul class="states">
+              <li class="s1"><b>まだ</b><span>いま復習へ</span></li>
+              <li class="s2"><b>覚えた</b><span>時間をおいて再確認</span></li>
+              <li class="s3"><b>自信あり</b><span>期限なしで維持</span></li>
+            </ul>
+            <p class="fine">関連演習で間違えた場合は、復習候補に戻ります。</p>
+          </header>
+        </div>
+      </section>
+
+      <!-- FEATURES -->
+      <section class="section features" id="features">
+        <div class="wrap">
+          <header class="section-head center reveal">
+            <p class="eyebrow">05 ・ DESIGNED FOR LEARNING</p>
+            <h2>調べる手間を、<span class="grad">学びの中で解決。</span></h2>
+          </header>
+          <div class="feat-grid">
+            <article class="feat big reveal">
+              <p class="eyebrow">PRACTICE AT YOUR PACE</p>
+              <h3>じっくり学ぶ日も、本番を意識する日も。</h3>
+              <p>毎問解説で理解を深める。まとめ採点で力を確かめる。サービス別の演習と資格別の模試から選べます。</p>
+              <div class="exam">
+                <div><span>CP<small>Cloud Practitioner</small></span><b>4<i>回 / 260問</i></b></div>
+                <div><span>SAA<small>Solutions Architect Associate</small></span><b>6<i>回 / 390問</i></b></div>
+                <p>各模試 65問・SAAは130分、CPは90分</p>
               </div>
             </article>
-            <article class="feature-small">
-              <span class="feature-icon" aria-hidden="true">↗</span>
-              <p class="feature-label">GO TO THE SOURCE</p>
+            <article class="feat reveal">
+              <span class="ico">↗</span>
               <h3>根拠まで、すぐ届く。</h3>
-              <p>
-                解説からAWS公式ドキュメントへ。納得できないところを、その場で深掘りできます。
-              </p>
+              <p>解説からAWS公式ドキュメントへ。納得できないところを、その場で深掘りできます。</p>
             </article>
-            <article class="feature-small">
-              <span class="feature-icon glossary-icon" aria-hidden="true"
-                >Aa</span
-              >
-              <p class="feature-label">KEEP YOUR FLOW</p>
+            <article class="feat reveal">
+              <span class="ico">Aa</span>
               <h3>知らない言葉で、止まらない。</h3>
-              <p>
-                304語の用語補足を収録。初めての言葉も意味を確認しながら、そのまま学習を進められます。
-              </p>
+              <p>304語の用語補足を収録。初めての言葉も、学習の流れのまま確認できます。</p>
             </article>
           </div>
         </div>
       </section>
-      <section id="pricing" class="pricing section wrap">
-        <div class="section-heading split-heading">
-          <div>
-            <p class="eyebrow">03 / SIMPLE PRICING</p>
-            <h2>最初の一歩は、無料で。</h2>
+
+      <!-- PRICING -->
+      <section class="section pricing" id="pricing">
+        <div class="wrap">
+          <header class="section-head center reveal">
+            <p class="eyebrow">06 ・ SIMPLE PRICING</p>
+            <h2>最初の一歩は、<span class="grad">無料で。</span></h2>
+            <p class="section-lead">まずはCPで、学び方との相性を確かめる。有料教材は月額ではなく買い切りです。</p>
+          </header>
+          <div class="price-grid">
+            <article class="price free reveal">
+              <p class="plan">START HERE</p>
+              <h3>CP 基本セット</h3>
+              <p class="price-num"><i>¥</i>0<small>基本無料</small></p>
+              <ul><li>CPの基本知識・判断ルール</li><li>模試 第1・2回、合計130問</li><li>図解・解説・記憶状態の記録</li></ul>
+              <a class="button" href="#start">配信について見る</a>
+            </article>
+            <article class="price reveal">
+              <p class="plan">MORE PRACTICE ・ 買い切り</p>
+              <h3>CP 演習追加セット</h3>
+              <p class="price-num"><i>¥</i>100<small>予定価格</small></p>
+              <ul><li>CP模試 第3・4回、合計130問</li><li>全問の解説・図解・根拠リンク</li><li>毎問解説・まとめ採点</li></ul>
+              <a class="button button-ghost" href="#start">配信について見る</a>
+            </article>
+            <article class="price reveal">
+              <p class="plan">GO FURTHER ・ 買い切り</p>
+              <h3>SAA 教材セット</h3>
+              <p class="price-num"><i>¥</i>1,000<small>予定価格</small></p>
+              <ul><li>SAAの基本知識・判断ルール</li><li>模試6回・390問＋サービス別演習</li><li>解説・図解・復習機能</li></ul>
+              <a class="button button-ghost" href="#start">配信について見る</a>
+            </article>
           </div>
-          <p class="section-intro">
-            まずはCPで、学び方との相性を確かめる。<br />もっと学びたくなったら、必要な教材だけ。<br />有料教材は、月額ではなく買い切りです。
-          </p>
-        </div>
-        <div class="pricing-grid">
-          <article class="price-card free">
-            <div class="plan-top">
-              <span>START HERE</span><span>まずはここから</span>
-            </div>
-            <h3>CP 基本セット</h3>
-            <p class="plan-description">はじめてのAWSを、理解から演習まで。</p>
-            <p class="price">
-              <span class="currency">¥</span>0<span class="price-unit"
-                >基本無料</span
-              >
-            </p>
-            <ul>
-              <li>CPの基本知識・判断ルール</li>
-              <li>模試 第1・2回、合計130問</li>
-              <li>図解・解説・記憶状態の記録</li>
-            </ul>
-            <a class="button" href="#start"
-              >配信について見る <span aria-hidden="true">↗</span></a
-            >
-          </article>
-          <article class="price-card">
-            <div class="plan-top">
-              <span>MORE PRACTICE</span><span>買い切り</span>
-            </div>
-            <h3>CP 演習追加セット</h3>
-            <p class="plan-description">演習を重ねて、理解を確かめたい方へ。</p>
-            <p class="price">
-              <span class="currency">¥</span>100<span class="price-unit"
-                >予定価格</span
-              >
-            </p>
-            <ul>
-              <li>CP模試 第3・4回、合計130問</li>
-              <li>全問の解説・図解・根拠リンク</li>
-              <li>毎問解説・まとめ採点</li>
-            </ul>
-            <a class="button button-outline" href="#start"
-              >配信について見る <span aria-hidden="true">↗</span></a
-            >
-          </article>
-          <article class="price-card">
-            <div class="plan-top">
-              <span>GO FURTHER</span><span>買い切り</span>
-            </div>
-            <h3>SAA 教材セット</h3>
-            <p class="plan-description">構成の選び分けまで、しっかり学ぶ。</p>
-            <p class="price">
-              <span class="currency">¥</span>1,000<span class="price-unit"
-                >予定価格</span
-              >
-            </p>
-            <ul>
-              <li>SAAの基本知識・判断ルール</li>
-              <li>模試6回・390問＋サービス別演習</li>
-              <li>解説・図解・復習機能</li>
-            </ul>
-            <a class="button button-outline" href="#start"
-              >配信について見る <span aria-hidden="true">↗</span></a
-            >
-          </article>
-        </div>
-        <p class="pricing-note">
-          日本向けの予定価格・提供内容です。販売開始時の情報は、App
-          Storeおよびアプリ内でご確認ください。
-        </p>
-      </section>
-      <section class="faq section wrap" id="faq">
-        <div class="faq-heading">
-          <p class="eyebrow">04 / QUESTIONS</p>
-          <h2>気になること。</h2>
-          <p>はじめる前に、もう少し。</p>
-        </div>
-        <div class="faq-list">
-          <details>
-            <summary>
-              <span>01</span>どこまで無料で使えますか？<i aria-hidden="true"
-                >+</i
-              >
-            </summary>
-            <p>
-              CPの基本知識・判断ルールと、模試第1・2回の合計130問が無料の対象です。CPの追加模試とSAA教材セットは、別途購入する構成です。
-            </p>
-          </details>
-          <details>
-            <summary>
-              <span>02</span>AWS初心者でも使えますか？<i aria-hidden="true"
-                >+</i
-              >
-            </summary>
-            <p>
-              基本編でサービスの役割を図と一緒に確認し、判断ルールで使い分けを学べます。用語補足もあるので、わからない言葉を確認しながら進められます。
-            </p>
-          </details>
-          <details>
-            <summary>
-              <span>03</span>基本知識と判断ルールの違いは？<i aria-hidden="true"
-                >+</i
-              >
-            </summary>
-            <p>
-              基本知識は「何をするサービスか、どう動くか」を学ぶ教材。判断ルールは「どんな条件なら、それを選ぶか」を学ぶ教材です。演習の解説から両方へ戻り、理解をつなげられます。
-            </p>
-          </details>
-          <details>
-            <summary>
-              <span>04</span>記憶状態は、どう復習につながりますか？<i
-                aria-hidden="true"
-                >+</i
-              >
-            </summary>
-            <p>
-              「まだ」は今、「覚えた」は1日後の再確認へ。「自信あり」は期限なしで維持し、関連する演習で間違えた場合は復習候補に戻します。記憶状態は自分の手応えの記録で、合格率の予測ではありません。
-            </p>
-          </details>
-          <details>
-            <summary>
-              <span>05</span>AWS公式のアプリですか？<i aria-hidden="true">+</i>
-            </summary>
-            <p>
-              AWS公式アプリではありません。独自に作成した教材・模試を提供し、根拠を確認するためのAWS公式ドキュメントへのリンクを用意しています。学習成果や試験合格を保証するものではありません。
-            </p>
-          </details>
+          <p class="fine center">日本向けの予定価格・提供内容です。販売開始時の情報は、App Storeおよびアプリ内でご確認ください。</p>
         </div>
       </section>
-      <section id="start" class="start">
-        <div class="wrap start-inner">
-          <div>
-            <p class="eyebrow">YOUR NEXT STEP</p>
-            <h2>次の一問を、<br />理由をもって選ぼう。</h2>
-            <p>
-              図で理解し、条件で選び、演習で確かめる。<br />AWSの学びを、ここから。
-            </p>
+
+      <!-- FAQ -->
+      <section class="section faq" id="faq">
+        <div class="wrap faq-grid">
+          <header class="section-head reveal">
+            <p class="eyebrow">07 ・ QUESTIONS</p>
+            <h2>気になること。</h2>
+          </header>
+          <div class="faq-list reveal">
+            <details><summary>どこまで無料で使えますか？<i aria-hidden="true">+</i></summary><p>CPの基本知識・判断ルールと、模試第1・2回の合計130問が無料の対象です。CPの追加模試とSAA教材セットは、別途購入する構成です。</p></details>
+            <details><summary>AWS初心者でも使えますか？<i aria-hidden="true">+</i></summary><p>基本編でサービスの役割を図と一緒に確認し、判断ルールで使い分けを学べます。用語補足もあるので、わからない言葉を確認しながら進められます。</p></details>
+            <details><summary>基本知識と判断ルールの違いは？<i aria-hidden="true">+</i></summary><p>基本知識は「何をするサービスか、どう動くか」を学ぶ教材。判断ルールは「どんな条件なら、それを選ぶか」を学ぶ教材です。演習の解説から両方へ戻り、理解をつなげられます。</p></details>
+            <details><summary>記憶状態は、どう復習につながりますか？<i aria-hidden="true">+</i></summary><p>「まだ」は今すぐ、「覚えた」は時間をおいた再確認へ。「自信あり」は期限なしで維持し、関連する演習で間違えた場合は復習候補に戻します。記憶状態は自分の手応えの記録で、合格率の予測ではありません。</p></details>
+            <details><summary>AWS公式のアプリですか？<i aria-hidden="true">+</i></summary><p>AWS公式アプリではありません。独自に作成した教材・模試を提供し、根拠を確認するためのAWS公式ドキュメントへのリンクを用意しています。学習成果や試験合格を保証するものではありません。</p></details>
           </div>
-          <div class="release-card">
-            <img
-              src="./assets/app-icon.png"
-              width="64"
-              height="64"
-              loading="lazy"
-              alt=""
-            />
-            <h3>AWS 判断ルールラボ</h3>
+        </div>
+      </section>
+
+      <!-- START -->
+      <section class="start" id="start">
+        <div class="wrap start-inner reveal">
+          <div>
+            <h2>仕組みを見て、<br />理由をもって選ぼう。</h2>
+            <p>図で理解し、条件で選び、演習で確かめる。AWSの学びを、ここから。</p>
+          </div>
+          <div class="release">
+            <img src="./assets/app-icon.png" width="64" height="64" loading="lazy" alt="" />
+            <h3>AWS判断ルールラボ</h3>
             <p>CP・SAA対応 / 基本無料</p>
-            <div class="release-status"><span></span>iOS版 公開準備中</div>
-            <p class="release-note">
-              App Storeの配信リンクは、<br />公開後にこのページでご案内します。
-            </p>
-            <a href="#approach"
-              >学び方をもう一度見る <span aria-hidden="true">↑</span></a
-            >
+            <p class="status"><i></i>iOS版 公開準備中</p>
+            <p class="fine">App Storeの配信リンクは、公開後にこのページでご案内します。</p>
+            <a href="#lab">動く図解をもう一度 ↑</a>
           </div>
         </div>
       </section>
     </main>
-    <footer class="footer wrap">
-      <div class="footer-top">
-        <a class="brand" href="#"
-          ><img
-            src="./assets/app-icon.png"
-            width="32"
-            height="32"
-            loading="lazy"
-            alt=""
-          /><span>AWS<span class="brand-sub">判断ルールラボ</span></span></a
-        ><a href="../">学習アプリ一覧 <span aria-hidden="true">↗</span></a
-        ><a href="#" class="back-top">ページの先頭へ ↑</a>
+
+    <footer class="footer">
+      <div class="wrap footer-in">
+        <a class="brand" href="#top"><img src="./assets/app-icon.png" width="28" height="28" loading="lazy" alt="" /><span>AWS判断ルールラボ</span></a>
+        <a href="../">学習アプリ一覧 ↗</a>
+        <a href="#top">ページの先頭へ ↑</a>
       </div>
-      <div class="footer-bottom">
-        <p>
-          Amazon Web Services、AWSはAmazon.com,
-          Inc.またはその関連会社の商標です。<br />本アプリはAWSの公式・認定製品ではありません。
-        </p>
+      <div class="wrap footer-note">
+        <p>Amazon Web Services、AWSはAmazon.com, Inc.またはその関連会社の商標です。本アプリはAWSの公式・認定製品ではありません。</p>
         <small>© 2026 AWS判断ルールラボ</small>
       </div>
     </footer>
