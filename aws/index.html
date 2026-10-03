@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AWS判断ルールラボ | 暗記の先に、選べる力を。</title>
+    <meta
+      name="description"
+      content="AWSの知識を、問題が解ける力へ。図解・判断ルール・演習・復習がつながるiOS学習アプリ。CPの基本と模試130問は無料。CP・SAAに対応。"
+    />
+    <meta name="theme-color" content="#f8f7f3" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="AWS判断ルールラボ | 暗記の先に、選べる力を。"
+    />
+    <meta
+      property="og:description"
+      content="図で理解し、条件で選び、演習で確かめる。CP・SAAの学びを、ひとつにつなぐ。"
+    />
+    <meta property="og:url" content="https://aieitan.com/aws/" />
+    <meta
+      property="og:image"
+      content="https://aieitan.com/aws/assets/app-icon.png"
+    />
+    <meta name="twitter:card" content="summary" />
+    <link rel="canonical" href="https://aieitan.com/aws/" />
+    <link rel="icon" href="./assets/app-icon.png" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./motion.js" defer></script>
+    <noscript
+      ><style>
+        .scenario-control,
+        .tour-tabs,
+        .tour-pagination {
+          display: none;
+        }
+        .tour-panel[hidden] {
+          display: block !important;
+        }
+        .tour-panel {
+          min-height: 0;
+          padding-bottom: 24px;
+        }
+      </style></noscript
+    >
+  </head>
+  <body>
+    <a class="skip-link" href="#main">本文へスキップ</a>
+    <header class="header">
+      <div class="header-inner wrap">
+        <a class="brand" href="#" aria-label="AWS判断ルールラボ トップ"
+          ><img
+            src="./assets/app-icon.png"
+            width="38"
+            height="38"
+            alt=""
+          /><span>AWS<span class="brand-sub">判断ルールラボ</span></span></a
+        >
+        <nav aria-label="メインナビゲーション">
+          <a href="#approach">学び方</a><a href="#features">教材の特徴</a
+          ><a href="#pricing">料金</a>
+        </nav>
+        <a class="button button-small" href="#start"
+          >配信について <span aria-hidden="true">↗</span></a
+        >
+      </div>
+    </header>
+    <main id="main">
+      <section class="hero wrap" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="eyebrow-line"></span> AWS CERTIFICATION STUDY
+          </p>
+          <p class="hero-kicker">AWSの知識を、問題が解ける力へ。</p>
+          <h1 id="hero-title">
+            暗記の先に、<br /><span class="title-emphasis">選べる力</span>を。
+          </h1>
+          <p class="hero-lead">
+            知っているのに、選択肢で迷ってしまう。<br />その一歩を、図解と判断ルールでつなぐ。<br />理解から演習まで、ひとつのアプリで。
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#approach"
+              >学び方を見る <span aria-hidden="true">↓</span></a
+            ><span class="hero-free"
+              >CPの基本＋模試130問<span>無料ではじめられます</span></span
+            >
+          </div>
+          <div class="hero-meta">
+            <span>iOS APP</span><span>CP / SAA 対応</span
+            ><span class="release-dot">公開準備中</span>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="board-topline">
+            <span>FROM KNOWLEDGE TO DECISION</span><span>01 — 02</span>
+          </div>
+          <div class="study-board">
+            <div class="board-heading">
+              <span class="board-symbol" aria-hidden="true">↗</span
+              ><span
+                >知識を、判断につなぐ。<small
+                  >DATABASE / データベースの選び方</small
+                ></span
+              ><span class="sample-tag">学習例</span>
+            </div>
+            <div class="scenario">
+              <span class="small-label">こんな要件なら？</span>
+              <p id="scenario-text">
+                ユーザーIDをキーに、<br />プロフィールを<strong
+                  >高速に取得。</strong
+                >
+              </p>
+              <span id="scenario-detail">テーブルの結合（JOIN）は不要。</span>
+            </div>
+            <div class="decision-lines" aria-hidden="true">
+              <svg viewBox="0 0 400 50" fill="none" preserveAspectRatio="none">
+                <path class="path-left" d="M200 0V20H95V48" />
+                <path class="path-right" d="M200 20H305V48" />
+                <circle cx="200" cy="2" r="3" /></svg
+              ><span>条件から、選び分ける</span>
+            </div>
+            <div class="service-options">
+              <div class="service-option is-selected" data-service="dynamo">
+                <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                  <ellipse cx="16" cy="8" rx="10" ry="4" />
+                  <path
+                    d="M6 8v16c0 2.2 4.5 4 10 4s10-1.8 10-4V8M6 16c0 2.2 4.5 4 10 4s10-1.8 10-4"
+                  /></svg
+                ><strong>DynamoDB</strong><span>キーで取得する</span
+                ><b class="service-check" aria-hidden="true">✓</b>
+              </div>
+              <div class="service-option" data-service="rds">
+                <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                  <rect x="4" y="5" width="24" height="22" rx="2" />
+                  <path d="M4 12h24M4 19h24M12 5v22" /></svg
+                ><strong>RDS</strong><span>表を結合して扱う</span
+                ><b class="service-check" aria-hidden="true">✓</b>
+              </div>
+            </div>
+            <p class="board-insight" id="scenario-insight" aria-live="polite">
+              <span aria-hidden="true">↳</span>
+              キー中心のアクセスなら、DynamoDB。
+            </p>
+            <div class="scenario-control">
+              <span>条件を変えてみる</span>
+              <div role="group" aria-label="学習例の条件">
+                <button type="button" data-scenario="0" aria-pressed="true">
+                  キーで取得</button
+                ><button type="button" data-scenario="1" aria-pressed="false">
+                  表を結合
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="board-bottomline">
+            <span class="board-note"
+              >名前を覚える。その先の「選ぶ理由」まで。</span
+            ><span aria-hidden="true">↗</span>
+          </div>
+          <p class="visual-caption">学習内容をもとにした説明用のデモです。</p>
+        </div>
+        <div class="hero-foot">
+          <span>UNDERSTAND. DECIDE. PRACTICE. REMEMBER.</span
+          ><a href="#approach"
+            >学びをつなぐ <span aria-hidden="true">↓</span></a
+          >
+        </div>
+      </section>
+      <section class="stats" aria-label="収録教材の規模">
+        <div class="wrap stats-inner">
+          <div class="stats-label">
+            理解を支える、<br />充実した教材。<span>CP・SAA 全収録内容</span>
+          </div>
+          <div class="stat">
+            <strong>152<span>テーマ</span></strong>
+            <p>図解で学ぶ基本知識</p>
+          </div>
+          <div class="stat">
+            <strong>64<span>ルール</span></strong>
+            <p>条件から選ぶ判断の軸</p>
+          </div>
+          <div class="stat">
+            <strong>650<span>問</span></strong>
+            <p>全10回の独自模試</p>
+          </div>
+        </div>
+        <p class="wrap stats-note">
+          有料教材を含みます。模試は独自に作成した問題です。
+        </p>
+      </section>
+      <section id="approach" class="approach section wrap">
+        <div class="section-heading split-heading">
+          <div>
+            <p class="eyebrow">01 / THE APPROACH</p>
+            <h2>知識がつながると、<br />答えの理由が見えてくる。</h2>
+          </div>
+          <p class="section-intro">
+            基本を読んで、問題を解くだけでは埋まらない溝。<br
+              class="desktop-break"
+            />「どんな条件で、何を選ぶか」を間に置くことで、<br
+              class="desktop-break"
+            />覚えた知識を、使える知識に変えていきます。
+          </p>
+        </div>
+        <ol class="learning-path">
+          <li>
+            <span>01 / UNDERSTAND</span>
+            <h3>図で、理解する。</h3>
+            <p>役割と仕組みをつかむ</p>
+          </li>
+          <li>
+            <span>02 / DECIDE</span>
+            <h3>条件で、選ぶ。</h3>
+            <p>似たサービスを使い分ける</p>
+          </li>
+          <li>
+            <span>03 / PRACTICE</span>
+            <h3>問題で、確かめる。</h3>
+            <p>正解の決め手を見つける</p>
+          </li>
+          <li>
+            <span>04 / REMEMBER</span>
+            <h3>苦手に、戻る。</h3>
+            <p>迷った知識から復習する</p>
+          </li>
+        </ol>
+        <div class="product-tour" id="journey">
+          <div class="tour-visual">
+            <div class="tour-visual-top">
+              <span>INSIDE THE APP</span><span id="journey-index">01 / 04</span>
+            </div>
+            <div class="screenshot-phone">
+              <img
+                id="app-screen"
+                src="./assets/screen-basics.png"
+                width="553"
+                height="1200"
+                loading="lazy"
+                alt="基本の図解画面。KMSキーの状態とアプリへの影響を図で確認。"
+              />
+            </div>
+            <p class="screen-caption">
+              実際のアプリ画面・開発中の内容を含みます
+            </p>
+          </div>
+          <div class="tour-content">
+            <div
+              class="tour-tabs"
+              role="tablist"
+              aria-label="アプリの学習ステップ"
+            >
+              <button
+                id="tab-0"
+                type="button"
+                role="tab"
+                data-step="0"
+                aria-selected="true"
+                aria-controls="panel-0"
+              >
+                基本</button
+              ><button
+                id="tab-1"
+                type="button"
+                role="tab"
+                data-step="1"
+                aria-selected="false"
+                aria-controls="panel-1"
+                tabindex="-1"
+              >
+                判断</button
+              ><button
+                id="tab-2"
+                type="button"
+                role="tab"
+                data-step="2"
+                aria-selected="false"
+                aria-controls="panel-2"
+                tabindex="-1"
+              >
+                演習</button
+              ><button
+                id="tab-3"
+                type="button"
+                role="tab"
+                data-step="3"
+                aria-selected="false"
+                aria-controls="panel-3"
+                tabindex="-1"
+              >
+                記憶
+              </button>
+            </div>
+            <article
+              id="panel-0"
+              role="tabpanel"
+              aria-labelledby="tab-0"
+              tabindex="0"
+              class="tour-panel"
+            >
+              <p class="chapter">01 <span>UNDERSTAND</span></p>
+              <h3>頭の中で想像するより、<br />図で見たほうが、早い。</h3>
+              <p>
+                サービスの役割や構成を、文字と図の両方で確認。全ての基本カードに図解があるから、初めての仕組みも具体的にイメージできます。
+              </p>
+              <div class="tour-detail">
+                <span>たとえば、KMSのキー管理。</span>
+                <p>
+                  「削除予約」「取消し」「再開」と状態を切り替えて、アプリへの影響を確認。何が起きるかまで、つながって理解できます。
+                </p>
+              </div>
+              <span class="tour-tag">152テーマの基本知識</span>
+            </article>
+            <article
+              id="panel-1"
+              role="tabpanel"
+              aria-labelledby="tab-1"
+              tabindex="0"
+              class="tour-panel"
+              hidden
+            >
+              <p class="chapter">02 <span>DECIDE</span></p>
+              <h3>「何をする？」から、<br />「いつ選ぶ？」へ。</h3>
+              <p>
+                サービス名を知っていても、似た選択肢には迷うもの。「場面 →
+                選ぶサービス → 理由」の順に、使い分けの軸を整理します。
+              </p>
+              <div class="tour-detail">
+                <span>たとえば、DynamoDBとRDS。</span>
+                <p>
+                  キーで取得するのか、複数の表を結合するのか。問題の条件と選択をつなげ、選ぶ理由だけでなく注意点も確認します。
+                </p>
+              </div>
+              <span class="tour-tag">64ルール・171の場面</span>
+            </article>
+            <article
+              id="panel-2"
+              role="tabpanel"
+              aria-labelledby="tab-2"
+              tabindex="0"
+              class="tour-panel"
+              hidden
+            >
+              <p class="chapter">03 <span>PRACTICE</span></p>
+              <h3>正解した。その理由まで、<br />自分のものに。</h3>
+              <p>
+                解答後も問題文を表示し、見るべき条件をハイライト。「なんとなく正解」を、根拠のある判断に変えていきます。
+              </p>
+              <div class="tour-detail">
+                <span>解説から、そのまま基本知識へ。</span>
+                <p>
+                  見落とした条件や、迷った選択肢を確認。関連する教材に戻れるので、間違いを次の一問に活かせます。
+                </p>
+              </div>
+              <span class="tour-tag">CP 260問・SAA 390問の模試</span>
+            </article>
+            <article
+              id="panel-3"
+              role="tabpanel"
+              aria-labelledby="tab-3"
+              tabindex="0"
+              class="tour-panel"
+              hidden
+            >
+              <p class="chapter">04 <span>REMEMBER</span></p>
+              <h3>全部を何度も、より。<br />いま必要なところを。</h3>
+              <p>
+                「まだ・覚えた・自信あり」で手応えを記録。再確認の時期と演習の誤答から、次に復習したい知識が見えてきます。
+              </p>
+              <div class="tour-detail">
+                <span>勉強する場所を、迷わず決める。</span>
+                <p>
+                  苦手な基本知識や判断ルールを見つけて、もう一度。限られた勉強時間を、理解が曖昧なところに使えます。
+                </p>
+              </div>
+              <span class="tour-tag">手応えと誤答に合わせた復習</span>
+              <p class="fine-print">
+                記憶状態は自己評価であり、合格率の予測ではありません。
+              </p>
+            </article>
+            <div class="tour-pagination">
+              <span>図解から復習まで、ひとつの流れに。</span
+              ><button
+                type="button"
+                id="next-step"
+                aria-label="次の学習ステップを見る"
+              >
+                →
+              </button>
+            </div>
+          </div>
+        </div>
+        <noscript
+          ><p class="nojs-note">
+            画面の切替と学習デモの操作にはJavaScriptを使用します。基本・判断・演習・復習の概要は上の学習フローでご確認いただけます。
+          </p></noscript
+        >
+      </section>
+      <section id="features" class="features section">
+        <div class="wrap">
+          <div class="section-heading split-heading">
+            <div>
+              <p class="eyebrow">02 / DESIGNED FOR LEARNING</p>
+              <h2>勉強の手間を減らす。<br />理解する時間を増やす。</h2>
+            </div>
+            <p class="section-intro">
+              わからない言葉を調べる。根拠を探す。<br />教材を行き来する小さな手間を、<br />学びの流れの中で解決します。
+            </p>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-main">
+              <div class="feature-main-copy">
+                <p class="feature-label">PRACTICE AT YOUR PACE</p>
+                <h3>じっくり学ぶ日も、<br />本番を意識する日も。</h3>
+                <p>
+                  毎問解説で理解を深める。まとめ採点で力を確かめる。サービス別の演習と資格別の模試を、目的に合わせて選べます。
+                </p>
+              </div>
+              <div class="exam-visual">
+                <div class="exam-row">
+                  <span class="exam-level"
+                    >CP<small>Cloud Practitioner</small></span
+                  ><strong>4<span>回 / 260問</span></strong>
+                </div>
+                <div class="exam-row">
+                  <span class="exam-level"
+                    >SAA<small>Solutions Architect Associate</small></span
+                  ><strong>6<span>回 / 390問</span></strong>
+                </div>
+                <div class="exam-foot">
+                  <span>各模試 65問</span><span>毎問解説 / まとめ採点</span>
+                </div>
+              </div>
+            </article>
+            <article class="feature-small">
+              <span class="feature-icon" aria-hidden="true">↗</span>
+              <p class="feature-label">GO TO THE SOURCE</p>
+              <h3>根拠まで、すぐ届く。</h3>
+              <p>
+                解説からAWS公式ドキュメントへ。納得できないところを、その場で深掘りできます。
+              </p>
+            </article>
+            <article class="feature-small">
+              <span class="feature-icon glossary-icon" aria-hidden="true"
+                >Aa</span
+              >
+              <p class="feature-label">KEEP YOUR FLOW</p>
+              <h3>知らない言葉で、止まらない。</h3>
+              <p>
+                304語の用語補足を収録。初めての言葉も意味を確認しながら、そのまま学習を進められます。
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section id="pricing" class="pricing section wrap">
+        <div class="section-heading split-heading">
+          <div>
+            <p class="eyebrow">03 / SIMPLE PRICING</p>
+            <h2>最初の一歩は、無料で。</h2>
+          </div>
+          <p class="section-intro">
+            まずはCPで、学び方との相性を確かめる。<br />もっと学びたくなったら、必要な教材だけ。<br />有料教材は、月額ではなく買い切りです。
+          </p>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card free">
+            <div class="plan-top">
+              <span>START HERE</span><span>まずはここから</span>
+            </div>
+            <h3>CP 基本セット</h3>
+            <p class="plan-description">はじめてのAWSを、理解から演習まで。</p>
+            <p class="price">
+              <span class="currency">¥</span>0<span class="price-unit"
+                >基本無料</span
+              >
+            </p>
+            <ul>
+              <li>CPの基本知識・判断ルール</li>
+              <li>模試 第1・2回、合計130問</li>
+              <li>図解・解説・記憶状態の記録</li>
+            </ul>
+            <a class="button" href="#start"
+              >配信について見る <span aria-hidden="true">↗</span></a
+            >
+          </article>
+          <article class="price-card">
+            <div class="plan-top">
+              <span>MORE PRACTICE</span><span>買い切り</span>
+            </div>
+            <h3>CP 演習追加セット</h3>
+            <p class="plan-description">演習を重ねて、理解を確かめたい方へ。</p>
+            <p class="price">
+              <span class="currency">¥</span>100<span class="price-unit"
+                >予定価格</span
+              >
+            </p>
+            <ul>
+              <li>CP模試 第3・4回、合計130問</li>
+              <li>全問の解説・図解・根拠リンク</li>
+              <li>毎問解説・まとめ採点</li>
+            </ul>
+            <a class="button button-outline" href="#start"
+              >配信について見る <span aria-hidden="true">↗</span></a
+            >
+          </article>
+          <article class="price-card">
+            <div class="plan-top">
+              <span>GO FURTHER</span><span>買い切り</span>
+            </div>
+            <h3>SAA 教材セット</h3>
+            <p class="plan-description">構成の選び分けまで、しっかり学ぶ。</p>
+            <p class="price">
+              <span class="currency">¥</span>1,000<span class="price-unit"
+                >予定価格</span
+              >
+            </p>
+            <ul>
+              <li>SAAの基本知識・判断ルール</li>
+              <li>模試6回・390問＋サービス別演習</li>
+              <li>解説・図解・復習機能</li>
+            </ul>
+            <a class="button button-outline" href="#start"
+              >配信について見る <span aria-hidden="true">↗</span></a
+            >
+          </article>
+        </div>
+        <p class="pricing-note">
+          日本向けの予定価格・提供内容です。販売開始時の情報は、App
+          Storeおよびアプリ内でご確認ください。
+        </p>
+      </section>
+      <section class="faq section wrap" id="faq">
+        <div class="faq-heading">
+          <p class="eyebrow">04 / QUESTIONS</p>
+          <h2>気になること。</h2>
+          <p>はじめる前に、もう少し。</p>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>
+              <span>01</span>どこまで無料で使えますか？<i aria-hidden="true"
+                >+</i
+              >
+            </summary>
+            <p>
+              CPの基本知識・判断ルールと、模試第1・2回の合計130問が無料の対象です。CPの追加模試とSAA教材セットは、別途購入する構成です。
+            </p>
+          </details>
+          <details>
+            <summary>
+              <span>02</span>AWS初心者でも使えますか？<i aria-hidden="true"
+                >+</i
+              >
+            </summary>
+            <p>
+              基本編でサービスの役割を図と一緒に確認し、判断ルールで使い分けを学べます。用語補足もあるので、わからない言葉を確認しながら進められます。
+            </p>
+          </details>
+          <details>
+            <summary>
+              <span>03</span>基本知識と判断ルールの違いは？<i aria-hidden="true"
+                >+</i
+              >
+            </summary>
+            <p>
+              基本知識は「何をするサービスか、どう動くか」を学ぶ教材。判断ルールは「どんな条件なら、それを選ぶか」を学ぶ教材です。演習の解説から両方へ戻り、理解をつなげられます。
+            </p>
+          </details>
+          <details>
+            <summary>
+              <span>04</span>記憶状態は、どう復習につながりますか？<i
+                aria-hidden="true"
+                >+</i
+              >
+            </summary>
+            <p>
+              「まだ」は今、「覚えた」は1日後の再確認へ。「自信あり」は期限なしで維持し、関連する演習で間違えた場合は復習候補に戻します。記憶状態は自分の手応えの記録で、合格率の予測ではありません。
+            </p>
+          </details>
+          <details>
+            <summary>
+              <span>05</span>AWS公式のアプリですか？<i aria-hidden="true">+</i>
+            </summary>
+            <p>
+              AWS公式アプリではありません。独自に作成した教材・模試を提供し、根拠を確認するためのAWS公式ドキュメントへのリンクを用意しています。学習成果や試験合格を保証するものではありません。
+            </p>
+          </details>
+        </div>
+      </section>
+      <section id="start" class="start">
+        <div class="wrap start-inner">
+          <div>
+            <p class="eyebrow">YOUR NEXT STEP</p>
+            <h2>次の一問を、<br />理由をもって選ぼう。</h2>
+            <p>
+              図で理解し、条件で選び、演習で確かめる。<br />AWSの学びを、ここから。
+            </p>
+          </div>
+          <div class="release-card">
+            <img
+              src="./assets/app-icon.png"
+              width="64"
+              height="64"
+              loading="lazy"
+              alt=""
+            />
+            <h3>AWS 判断ルールラボ</h3>
+            <p>CP・SAA対応 / 基本無料</p>
+            <div class="release-status"><span></span>iOS版 公開準備中</div>
+            <p class="release-note">
+              App Storeの配信リンクは、<br />公開後にこのページでご案内します。
+            </p>
+            <a href="#approach"
+              >学び方をもう一度見る <span aria-hidden="true">↑</span></a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer wrap">
+      <div class="footer-top">
+        <a class="brand" href="#"
+          ><img
+            src="./assets/app-icon.png"
+            width="32"
+            height="32"
+            loading="lazy"
+            alt=""
+          /><span>AWS<span class="brand-sub">判断ルールラボ</span></span></a
+        ><a href="../">学習アプリ一覧 <span aria-hidden="true">↗</span></a
+        ><a href="#" class="back-top">ページの先頭へ ↑</a>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          Amazon Web Services、AWSはAmazon.com,
+          Inc.またはその関連会社の商標です。<br />本アプリはAWSの公式・認定製品ではありません。
+        </p>
+        <small>© 2026 AWS判断ルールラボ</small>
+      </div>
+    </footer>
+  </body>
+</html>

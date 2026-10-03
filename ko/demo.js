@@ -462,18 +462,24 @@ const renderTest = () => {
   if (!current) {
     screen.innerHTML = `
       <div class="ios-test-screen">
-        <div class="ios-complete">
+        <div class="ios-complete demo-result" data-demo-result>
           <div>${icon("checkmark")}</div>
-          <h3>完了</h3>
-          <p>学習中 ${state.testCounts.learning} / 覚えた ${state.testCounts.known} / 完全定着 ${state.testCounts.mastered}</p>
-          <div class="ios-complete-actions">
-            <button type="button" data-action="open-list">一覧へ戻る</button>
-            <button type="button" data-action="open-detail" data-word-id="${demoWords[0].id}">単語詳細を見る</button>
+          <h3>おつかれさま！</h3>
+          <p class="demo-sub">${state.testWords.length}語を仕分けました</p>
+          <div class="demo-score">${state.testCounts.known + state.testCounts.mastered}<small>語を「覚えた」</small></div>
+          <div class="demo-bars" aria-label="仕分け結果">
+            <span class="l">まだ ${state.testCounts.learning}</span><span class="k">覚えた ${state.testCounts.known}</span><span class="m">定着 ${state.testCounts.mastered}</span>
+          </div>
+          <p>製品版では全約500語をこの流れで。<br />忘れかけた単語は記憶度で自動的に浮かび上がります。</p>
+          <a class="demo-buy app-store-link" href="https://apps.apple.com/jp/app/ai%E9%9F%93%E5%8D%98%E8%AA%9E/id6787384946" target="_blank" rel="noopener">App Storeで続きを学ぶ</a>
+          <div class="demo-secondary">
             <button type="button" data-action="restart-test">もう一度</button>
+            <button type="button" data-action="open-list">単語一覧を見る</button>
           </div>
         </div>
       </div>
     `;
+    document.querySelector(".experience-copy")?.classList.add("demo-finished");
     return;
   }
 

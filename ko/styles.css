@@ -34,7 +34,7 @@ body {
     radial-gradient(circle at 18% 18%, rgba(0, 29, 255, 0.12), transparent 28%),
     linear-gradient(180deg, #ffffff 0%, var(--paper) 42%, #eef4ff 100%);
   color: var(--ink);
-  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
+  font-family: "Noto Sans JP", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Apple SD Gothic Neo", "Yu Gothic", sans-serif;
   line-height: 1.75;
   overflow-wrap: break-word;
 }
@@ -1352,7 +1352,7 @@ h3 {
   background: #fff;
   border-radius: 36px;
   color: #111114;
-  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+  font-family: "Noto Sans JP", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Apple SD Gothic Neo", "Yu Gothic", sans-serif;
 }
 
 .hero-detail-nav {
@@ -1703,7 +1703,7 @@ h3 {
   background: #f2f2f7;
   border-radius: 36px;
   color: #111114;
-  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+  font-family: "Noto Sans JP", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Apple SD Gothic Neo", "Yu Gothic", sans-serif;
 }
 
 .swift-nav {
@@ -6909,3 +6909,52 @@ h3 {
   background: #20c35a;
   animation: livePulse 1.6s ease-in-out infinite;
 }
+
+/* ---- 2026-09 conversion pass ---- */
+main section[id] { scroll-margin-top: 96px; }
+@media (max-width: 720px) { main section[id] { scroll-margin-top: 150px; } }
+.use-case-note { margin: 18px auto 0; max-width: 960px; font-size: 12px; color: #6b7280; text-align: center; }
+.platform-note { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 12px; font-size: 13px; color: #4b5563; }
+.platform-note b { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; background: #eef2ff; color: #1f2a6b; font-weight: 700; }
+.platform-note b.soon { background: #ecfdf5; color: #065f46; }
+.demo-result { display: grid; gap: 10px; justify-items: center; text-align: center; padding: 18px 14px; }
+.demo-result .demo-score { font-size: 40px; font-weight: 800; line-height: 1; letter-spacing: -0.02em; }
+.demo-result .demo-score small { font-size: 16px; font-weight: 700; margin-left: 2px; }
+.demo-result .demo-bars { display: flex; gap: 6px; width: 100%; max-width: 260px; }
+.demo-result .demo-bars span { flex: 1; border-radius: 8px; padding: 6px 4px; font-size: 11px; font-weight: 700; color: #fff; }
+.demo-result .demo-bars .l { background: #8e8e93; } .demo-result .demo-bars .k { background: #34c759; } .demo-result .demo-bars .m { background: #007aff; }
+.demo-result p { margin: 0; font-size: 13px; color: #3c3c43; }
+.demo-result a.demo-buy { display: block; width: 100%; max-width: 260px; padding: 12px 14px; border-radius: 14px; background: #007aff; color: #fff; font-weight: 800; text-decoration: none; box-shadow: 0 8px 20px rgba(0, 122, 255, .3); }
+.demo-result .demo-secondary { display: flex; gap: 8px; }
+.demo-result .demo-secondary button { border: 0; border-radius: 999px; padding: 8px 12px; background: #f2f2f7; color: #007aff; font-weight: 700; font: inherit; font-size: 12px; cursor: pointer; }
+.experience-copy.demo-finished .primary-button { animation: demo-cta-pulse 1.6s ease-in-out 3; }
+@keyframes demo-cta-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); box-shadow: 0 12px 30px rgba(0, 29, 255, .35); } }
+@media (prefers-reduced-motion: reduce) { .experience-copy.demo-finished .primary-button { animation: none; } }
+.ios-complete.demo-result > div.demo-score,
+.ios-complete.demo-result > div.demo-bars,
+.ios-complete.demo-result > div.demo-secondary { display: flex; width: auto; height: auto; border-radius: 0; background: none; color: inherit; font-size: inherit; place-items: initial; }
+.ios-complete.demo-result > div.demo-score { align-items: baseline; justify-content: center; font-size: 40px; color: #1c1c1e; }
+.ios-complete.demo-result > div.demo-bars { width: 100%; max-width: 260px; }
+.ios-complete.demo-result > div:first-child { width: 56px; height: 56px; font-size: 32px; }
+.ios-complete.demo-result h3 { margin: 0; }
+
+/* ---- 2026-09 typography: 全OSで同じ書体・自然な改行 ---- */
+body { font-feature-settings: "palt" 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+h1, h2, h3, .lead, .hero-copy p { word-break: auto-phrase; text-wrap: balance; }
+p, li, dd { text-wrap: pretty; }
+h1, h2 { letter-spacing: -0.01em; }
+
+.app-switch { display: flex; gap: 2px; flex-shrink: 0; padding: 3px; border-radius: 999px; background: rgba(15, 23, 42, 0.06); font-size: 13px; }
+.app-switch a { padding: 6px 12px; border-radius: 999px; color: #4b5563; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.app-switch a[aria-current="page"] { background: #fff; color: var(--app-switch-accent, #001dff); box-shadow: 0 1px 4px rgba(15, 23, 42, 0.12); }
+.site-header .site-nav { flex: 1; justify-content: flex-end; }
+@media (max-width: 720px) {
+  .site-header { position: sticky; }
+  .app-switch { position: absolute; top: 12px; right: 12px; }
+  .site-header .site-nav { justify-content: flex-start; max-width: 100%; }
+}
+
+.demo-result .demo-sub { margin: -4px 0 0; font-size: 13px; font-weight: 600; color: #6e6e73; }
+
+.ios-test-coach.v2 .coach-ring, .ios-test-coach.v2 .coach-dot { top: 72%; }
+.ios-test-coach.v2 strong { white-space: nowrap; bottom: 14px; }

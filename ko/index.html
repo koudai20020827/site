@@ -29,7 +29,10 @@
     <meta name="twitter:card" content="summary" />
     <link rel="icon" href="./assets/audio-codex-icon.jpg" />
     <link rel="canonical" href="https://aieitan.com/ko/" />
-    <link rel="stylesheet" href="./styles.css?v=cvr-boost-20260708e" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Sans+KR:wght@500;700;900&display=swap" />
+    <link rel="stylesheet" href="./styles.css?v=cvr-20260924" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -45,53 +48,89 @@
         }
       }
     </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "月額課金はありますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "月額ではなく、通常1500円、セール時限定900円の買い切り。毎月の固定費を増やさず、長く使える韓国語単語帳を目指しています。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "全単語に画像や音声がありますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "収録約500語すべてに、AIイメージ画像、AI発音音声、AI例文音声、例文、語源、そして全活用形の音声を用意しています。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "どんな韓国語単語が入っていますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "日常・旅行・推し活で本当に使う約500語を、基礎から10レベルに分けて収録。あいさつから旅行会話、推し活フレーズまで、場面ごとに幅広く学べます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "普通の単語帳と何が違いますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "単語数だけでなく、覚えた回数、記憶度、完全定着までまとめて管理できます。覚えたつもりで終わらせない設計です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "覚えたと完全定着は何が違いますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "覚えたは記憶度100%から始まり、時間とともに少しずつ減衰します。完全定着は長期記憶扱いで減衰対象から外し、復習時間をまだ不安な単語へ回せます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "韓国語が初めてでも使えますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "使えます。ハングル入門で、文字の組み立て、母音・子音・パッチム、連音化や濃音化といった発音の変化までを、音声つきでざっくり掴んでから単語学習に入れます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "短い時間でも使えますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "スワイプテストで、覚えた・覚えていない・完全定着をすぐに仕分けできます。通勤中や寝る前の数分でも進めやすいです。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Widgetでは何が見えますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "覚えた単語数と完全定着した単語数をホーム画面で確認できます。アプリを開く前から、学習の積み上げが見えるようにします。そして復習テストもWidgetからすぐ始められます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Androidスマホでも使えますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "現在はiPhone・iPadで配信中です。Android版はGoogle Playでの公開に向けて準備を進めています。学習データは端末内に保存され、JSONバックアップで書き出し・読み込みができます。"
+      }
+    }
+  ]
+}
+    </script>
   </head>
   <body data-force-motion="true">
-    <nav
-      aria-label="アプリ切替"
-      style="
-        position: fixed;
-        top: 12px;
-        right: 12px;
-        z-index: 9999;
-        display: flex;
-        gap: 4px;
-        font-family:
-          system-ui,
-          -apple-system,
-          sans-serif;
-        font-size: 13px;
-        background: rgba(255, 255, 255, 0.82);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        padding: 4px 5px;
-        border-radius: 999px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
-      "
-    >
-      <a
-        href="/en/"
-        style="
-          text-decoration: none;
-          padding: 4px 11px;
-          border-radius: 999px;
-          font-weight: 600;
-          color: #555;
-        "
-        >英単語</a
-      ><a
-        href="/ko/"
-        style="
-          text-decoration: none;
-          padding: 4px 11px;
-          border-radius: 999px;
-          font-weight: 600;
-          color: #001dff;
-          background: #e8ebff;
-        "
-        >韓国語単語</a
-      >
-    </nav>
+    
     <header class="site-header">
       <a class="brand" href="#top" aria-label="AI韓単語 トップへ">
         <img src="./assets/audio-codex-icon.jpg" alt="" />
@@ -108,6 +147,7 @@
         <a href="#price">価格</a>
         <a href="#faq">FAQ</a>
       </nav>
+      <nav class="app-switch" aria-label="アプリ切替"><a href="/en/">英単語</a><a href="/ko/" aria-current="page">韓国語</a></nav>
     </header>
 
     <main id="top">
@@ -133,7 +173,7 @@
               href="https://apps.apple.com/jp/app/ai%E9%9F%93%E5%8D%98%E8%AA%9E/id6787384946"
               target="_blank"
               rel="noopener"
-              >今すぐ900円で使う500語を手に入れる</a
+              >900円で約500語を手に入れる</a
             >
             <a class="secondary-button" href="#experience"
               >30秒だけ体験してみる</a
@@ -144,6 +184,7 @@
             <i>全単語にAI画像と全活用形の音声</i>
             <i>セール終了で¥1,500に戻ります</i>
           </p>
+          <p class="platform-note" aria-label="対応端末"><b>iPhone・iPad 配信中</b><b class="soon">Android版 準備中</b></p>
           <dl class="hero-metrics" aria-label="AI韓単語の主要価値">
             <div>
               <dt>約500</dt>
@@ -1116,6 +1157,12 @@
               >と<strong>完全定着した単語数</strong>をホーム画面で確認できます。アプリを開く前から、学習の積み上げが見えるようにします。そして復習テストもWidgetからすぐ始められます。
             </p>
           </article>
+                  <article>
+            <h3><span>Q.</span>Androidスマホでも使えますか？</h3>
+            <p>
+              現在は<strong>iPhone・iPadで配信中</strong>です。Android版はGoogle Playでの公開に向けて準備を進めています。学習データは端末内に保存され、JSONバックアップで書き出し・読み込みができます。
+            </p>
+          </article>
         </div>
       </section>
 
@@ -1283,6 +1330,6 @@
         }
       })();
     </script>
-    <script src="./demo.js?v=word-refresh-20260708"></script>
+    <script src="./demo.js?v=trial-20260924"></script>
   </body>
 </html>

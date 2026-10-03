@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AI Word Apps | AIと作る単語学習アプリ一覧</title>
+    <title>AI Learning Apps | 語学・AWS資格の学習アプリ一覧</title>
     <meta
       name="description"
-      content="AIと作った単語学習アプリシリーズ。英単語を学べる「AI英単語」、韓国語単語を学べる「AI韓国語単語」。画像・音声・例文・記憶度の見える化で、語彙学習を毎日の習慣に。"
+      content="英単語・韓国語からAWS資格まで。画像や図解、演習、記憶状態の見える化で学びを支える学習アプリシリーズ。"
     />
     <meta name="robots" content="index,follow" />
     <meta name="theme-color" content="#001dff" />
-    <meta property="og:title" content="AI Word Apps | AIと作る単語学習アプリ一覧" />
-    <meta property="og:description" content="AIと作る単語学習アプリシリーズ。学びたい言語のアプリを選んでください。" />
+    <meta property="og:title" content="AI Learning Apps | 語学・AWS資格の学習アプリ一覧" />
+    <meta property="og:description" content="語学からAWS資格まで。あなたの学びに合うアプリを選んでください。" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://aieitan.com/" />
     <meta property="og:image" content="https://aieitan.com/en/assets/audio-codex-icon.jpg" />
@@ -31,7 +31,7 @@
         margin: 0;
         min-height: 100vh;
         overflow-x: hidden;
-        font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
+        font-family: "Noto Sans JP", system-ui, -apple-system, "Hiragino Sans", sans-serif; font-feature-settings: "palt" 1;
         color: var(--ink);
         background: linear-gradient(180deg, #ffffff 0%, #f5f7ff 55%, #eef1ff 100%);
         display: flex;
@@ -401,6 +401,9 @@
         .brand-mark, h1, .lead, .count-line, footer { opacity: 1; }
       }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" />
   </head>
   <body>
     <div class="bg-blob b1" aria-hidden="true"></div>
@@ -408,15 +411,15 @@
     <div class="bg-blob b3" aria-hidden="true"></div>
 
     <div class="top">
-      <span class="brand-mark"><span class="brand-dot" aria-hidden="true"></span><span class="brand-label">AI Word Apps</span></span>
-      <h1>学びたい言語の<br /><span class="grad">単語学習アプリ</span>を選んでください</h1>
-      <p class="lead">画像・音声・例文・記憶度の見える化で覚える、買い切りの単語学習アプリシリーズ。</p>
-      <p class="count-line"><i aria-hidden="true"></i>現在2アプリ配信中・今後も追加予定</p>
+      <span class="brand-mark"><span class="brand-dot" aria-hidden="true"></span><span class="brand-label">AI Learning Apps</span></span>
+      <h1>語学も、AWS資格も。<br /><span class="grad">学びが進むアプリ</span>を選んでください</h1>
+      <p class="lead">画像や図解、演習、記憶の見える化で、毎日の学びをもっと効率よく。</p>
+      <p class="count-line"><i aria-hidden="true"></i>語学アプリ2本配信中・Android版も準備中・AWS資格アプリも準備中</p>
     </div>
 
     <div class="app-grid" id="appGrid" aria-label="アプリ一覧"></div>
 
-    <footer>© 2026 AI Word Apps</footer>
+    <footer>© 2026 AI Learning Apps</footer>
 
     <script>
       // Data-driven app list — add a new object here when a new app ships.
@@ -433,10 +436,19 @@
           href: "/ko/",
           icon: "./ko/assets/audio-codex-icon.jpg",
           flag: "🇰🇷",
-          name: "AI韓国語単語",
+          name: "AI韓単語",
           tagline: "日常・旅行・推し活の約500語を、画像と音声で。",
           accent: "#e0492f",
           badge: "NEW",
+        },
+        {
+          href: "/aws/",
+          icon: "./aws/assets/app-icon.png",
+          flag: "☁",
+          name: "AWS判断ルールラボ",
+          tagline: "基本無料。図解・判断・演習で、合格を目指す。",
+          accent: "#739d37",
+          badge: "公開準備中",
         },
       ];
 
@@ -466,7 +478,7 @@
         <div class="app-tile app-tile-soon" style="--i:${apps.length}">
           <span class="app-icon-wrap soon"><span class="app-icon-plus" aria-hidden="true">+</span></span>
           <h2>Coming soon</h2>
-          <p>次のAI単語アプリを準備中です。</p>
+          <p>次の学習アプリを準備中です。</p>
         </div>`;
     </script>
   </body>
