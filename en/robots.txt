@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://koudai20020827.github.io/audio_codex/sitemap.xml
