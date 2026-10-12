@@ -1,4 +1,4 @@
-# AWS判断ルールラボ LP
+# AWS認定資格 サクッと合格問題集 LP
 
 AWS学習アプリの紹介サイト。Webサイトは `audio_codex/site/aws/` に集約し、アプリ本体は隣の `aws_codex/` で管理します。静的HTML / CSS / JavaScriptで、`site/` の既存GitHub Pagesワークフローから `/aws/` に配信する構成です。
 
